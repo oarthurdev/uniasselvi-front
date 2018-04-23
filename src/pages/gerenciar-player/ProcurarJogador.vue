@@ -100,4 +100,10 @@ export default {
 #alert-wrong {
   display: none;
 }
+#alert-success {
+  display: none;
+}
+#alert-carregando {
+  display: none;
+}
 </style>

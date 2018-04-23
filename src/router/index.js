@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Login from 'components/Login.vue'
 import ProcurarJogador from 'pages/gerenciar-player/ProcurarJogador.vue'
+import PunirJogador from 'pages/gerenciar-player/PunirJogador.vue'
 import Logout from 'components/Logout.vue'
 import Hello from 'components/Hello.vue'
 import Sample from 'components/Sample.vue'
@@ -40,6 +41,11 @@ export default new Router({
       path: '/procurar-jogador',
       name: 'ProcurarJogador',
       component: ProcurarJogador
+    },
+    {
+      path: '/punir-jogador',
+      name: 'PunirJogador',
+      component: PunirJogador
     },
     {
       path: '/logout',
