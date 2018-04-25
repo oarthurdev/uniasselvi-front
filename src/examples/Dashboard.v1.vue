@@ -1,11 +1,11 @@
-<template>
+<template v-on:onload="onLoadGetData">
   <div class="dashboard">
     <row>
       <div class="col-md-4 col-sm-6 col-xs-12">
         <va-small-box
           color="yellow"
           icon="ion-person-add"
-          title="44"
+          v-bind:title="contasRegistradas"
           description="Contas Registradas"
           moreText="More info">
         </va-small-box>
@@ -14,7 +14,7 @@
         <va-small-box
           color="green"
           icon="ion-person-add"
-          title="44"
+          v-bind:title="gmsRegistrados"
           description="GMs Cadastrados"
           moreText="More info">
         </va-small-box>
@@ -23,7 +23,7 @@
         <va-small-box
           color="red"
           icon="ion-person"
-          title="44"
+          v-bind:title="contasBanidas"
           description="Usuários Banidos"
           moreText="More info">
         </va-small-box>
@@ -33,7 +33,7 @@
     <row>
       <div class="col-md-12 col-sm-6 col-xs-12">
         <section class="connectedSortable ui-sortable">
-          <usuarios-registrados></usuarios-registrados>
+        <usuarios-registrados v-bind:usuariosNovos="ultimasContasRegistradas" v-bind:listaIds="listaIds"></usuarios-registrados>
         </section>
       </div>
     </row>
@@ -52,13 +52,28 @@ export default {
   name: 'dashboard',
   data () {
     return {
-
+      'contasRegistradas': 0,
+      'gmsRegistrados': 0,
+      'contasBanidas': 0,
+      'ultimasContasRegistradas': 0,
+      'players': [],
+      'listaIds': []
     }
   },
-  methods: {
-    clickToSmallBox () {
-      alert('click!!!: clickToSmallBox')
-    }
+  mounted () {
+    let vm = this
+    this.$http.get('home')
+      .then(function (result) {
+        if (result.data) {
+          vm.listaIds = result.data.dadosUltimasIdsRegistradas
+          vm.contasRegistradas = result.data.contasRegistradas
+          vm.gmsRegistrados = result.data.gmsRegistrados
+          vm.contasBanidas = result.data.contasBanidas
+          vm.ultimasContasRegistradas = result.data.ultimasContasRegistradas
+        } else {
+          return false
+        }
+      })
   },
   components: {
     'va-small-box': VASmallBox,

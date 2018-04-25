@@ -26,6 +26,9 @@
             <div class="alert alert-danger uspass-wrong mgtp-5px" name="alert-wrong" id="alert-wrong" role="alert">
               <p class="color-black">Nenhum resultado.</p>
             </div>
+            <div class="alert alert-warning alert-carregando mgtp-5px" name="alert-carregando" id="alert-carregando" role="alert">
+              <p class="color-black">Carregando, espere um pouco....</p>
+            </div>
           </div>
         </form>
       </div>
@@ -75,6 +78,7 @@ export default {
   methods: {
     clickBtn (e) {
       e.preventDefault()
+      $('#alert-carregando').show()
       let vm = this
       console.log('submit')
       this.$http
@@ -82,13 +86,15 @@ export default {
         .then(function (result) {
           console.log(result)
           if (result.data && result.data.length > 0) {
+            $('#alert-carregando').hide()
             vm.players = result.data
           } else {
+            $('#alert-carregando').hide()
             vm.players = []
             $('#alert-wrong').show()
             setTimeout(function () {
               $('#alert-wrong').hide()
-            }, 5000)
+            }, 3000)
             return false
           }
         })

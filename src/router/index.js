@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Login from 'components/Login.vue'
 import ProcurarJogador from 'pages/gerenciar-player/ProcurarJogador.vue'
 import PunirJogador from 'pages/gerenciar-player/PunirJogador.vue'
+import CadastrarGameMaster from 'pages/gerenciar-gm/CadastrarGm.vue'
 import Logout from 'components/Logout.vue'
 import Hello from 'components/Hello.vue'
 import Sample from 'components/Sample.vue'
@@ -46,6 +47,11 @@ export default new Router({
       path: '/punir-jogador',
       name: 'PunirJogador',
       component: PunirJogador
+    },
+    {
+      path: '/cadastrar-game-master',
+      name: 'CadastrarGameMaster',
+      component: CadastrarGameMaster
     },
     {
       path: '/logout',

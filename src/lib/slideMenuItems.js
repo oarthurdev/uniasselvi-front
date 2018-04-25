@@ -6,7 +6,7 @@ module.exports = [
   },
   {
     type: 'item',
-    icon: 'fa fa-home fa-fw',
+    icon: 'fa fa-home',
     name: 'Home',
     router: {
       name: 'Home'
@@ -28,7 +28,7 @@ module.exports = [
       {
         type: 'item',
         icon: 'fa fa-circle-o',
-        name: 'Punir Jogadorr',
+        name: 'Punir Jogador',
         router: {
           name: 'PunirJogador'
         }
