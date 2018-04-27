@@ -3,7 +3,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-body"> -->
-                <div class="login">
+                <!-- <div class="login">
                     <form action="" v-on:submit="clickBtn" method="POST" name="form-login" id="form-login" class="form-login-class">
                         <img src="../assets/imgs/logo.png" class="logoLogin"/>
                         <div class="input-group input-group-lg">
@@ -30,7 +30,50 @@
                         <p class="color-black">Carregando, espere um pouco....</p>
                         </div>
                     </form>
-                </div>
+                </div> -->
+                <div class="login-box">
+  <div class="login-logo">
+    <a href="/login"><b>Gothic</b>PT</a>
+  </div>
+  <!-- /.login-logo -->
+  <div class="login-box-body">
+    <p class="login-box-msg">Sign in to start your session</p>
+
+    <form v-on:submit="clickBtn" method="POST" name="form-login" id="form-login">
+      <div class="form-group has-feedback">
+        <input type="text" v-model="username" name="username" id="username" class="form-control" placeholder="Account Name">
+        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+      </div>
+      <div class="form-group has-feedback">
+        <input type="password" v-model="password" name="password" id="password" class="form-control" placeholder="Password">
+        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+      </div>
+      <div class="row">
+        
+        <!-- /.col -->
+        <div class="col-xs-12">
+          <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+        </div>
+        <!-- /.col -->
+      </div>
+      <div class="alert alert-danger uspass-wrong mgtp-5px" name="alert-wrong" id="alert-wrong" role="alert">
+        <p class="color-black">Usuário ou senha incorretos.</p>
+      </div>
+      <div class="alert alert-success alert-logando mgtp-5px" name="alert-success" id="alert-success" role="alert">
+        <p class="color-black">Dados corretos, você está sendo logado.</p>
+      </div>
+      <div class="callout callout-warning" name="alert-carregando" id="alert-carregando" role="alert">
+        <p class="color-black">Carregando, espere um pouco....</p>
+      </div>
+    </form>
+
+    <!-- /.social-auth-links -->
+
+    
+
+  </div>
+  <!-- /.login-box-body -->
+</div>
             <!-- </div>            
         </div>
     </div>
@@ -80,7 +123,10 @@ export default {
         if (result.data && result.data.id) {
           localStorage.setItem('username', result.data.username)
           localStorage.setItem('cargo', result.data.cargo)
-          window.location.href = '/home'
+          localStorage.setItem('nick', result.data.nick)
+          localStorage.setItem('permissao', result.data.permissao)
+          localStorage.setItem('token', result.data.token)
+          window.location.href = '/home?sessao=' + localStorage.getItem('token')
         } else {
           $('#alert-carregando').hide()
           $('#alert-wrong').show()
@@ -89,7 +135,10 @@ export default {
           }, 5000)
           return false
         }
-      })
+      },
+        {
+          headers: {'Authorization': 'Basic YXBpOnBhc3N3b3Jk'}
+        })
     }
   }
 }

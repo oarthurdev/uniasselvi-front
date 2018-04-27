@@ -87,6 +87,7 @@ export default {
         .then(function (result) {
           console.log(result)
           if (result.data) {
+            $('#alert-carregando').hide()
             $('#alert-success').show()
             setTimeout(function () {
               $('#alert-success').hide()

@@ -24,7 +24,7 @@
               {{item.uid}}
             </th>
             <th style="font-weight: normal;">
-              {{moment(item.rday).format('DD/MM/YYYY')}}
+              {{moment(item.rday).format('DD/MM/YYYY HH:mm')}}
             </th>
             
           </tr>

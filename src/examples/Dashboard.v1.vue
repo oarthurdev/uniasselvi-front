@@ -7,7 +7,7 @@
           icon="ion-person-add"
           v-bind:title="contasRegistradas"
           description="Contas Registradas"
-          moreText="More info">
+          moreText="Mais Informações">
         </va-small-box>
       </div>
       <div class="col-md-4 col-sm-6 col-xs-12">
@@ -16,7 +16,7 @@
           icon="ion-person-add"
           v-bind:title="gmsRegistrados"
           description="GMs Cadastrados"
-          moreText="More info">
+          moreText="Mais Informações">
         </va-small-box>
       </div>
       <div class="col-md-4 col-sm-6 col-xs-12">
@@ -25,7 +25,7 @@
           icon="ion-person"
           v-bind:title="contasBanidas"
           description="Usuários Banidos"
-          moreText="More info">
+          moreText="Mais Informações">
         </va-small-box>
       </div>
     </row>
@@ -62,7 +62,10 @@ export default {
   },
   mounted () {
     let vm = this
-    this.$http.get('home')
+    this.$http.get('home',
+      {
+        headers: {'Authorization': localStorage.getItem('token')}}
+      )
       .then(function (result) {
         if (result.data) {
           vm.listaIds = result.data.dadosUltimasIdsRegistradas

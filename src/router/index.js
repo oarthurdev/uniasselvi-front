@@ -2,8 +2,11 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Login from 'components/Login.vue'
 import ProcurarJogador from 'pages/gerenciar-player/ProcurarJogador.vue'
+import JogadoresPunidos from 'pages/gerenciar-player/JogadoresPunidos.vue'
 import PunirJogador from 'pages/gerenciar-player/PunirJogador.vue'
 import CadastrarGameMaster from 'pages/gerenciar-gm/CadastrarGm.vue'
+import GMsCadastrados from 'pages/gerenciar-gm/GMsCadastrados.vue'
+import ProfileGM from 'pages/profile/GameMaster.vue'
 import Logout from 'components/Logout.vue'
 import Hello from 'components/Hello.vue'
 import Sample from 'components/Sample.vue'
@@ -44,14 +47,29 @@ export default new Router({
       component: ProcurarJogador
     },
     {
+      path: '/jogadores-punidos',
+      name: 'JogadoresPunidos',
+      component: JogadoresPunidos
+    },
+    {
       path: '/punir-jogador',
       name: 'PunirJogador',
       component: PunirJogador
     },
     {
+      path: '/profile',
+      name: 'ProfileGM',
+      component: ProfileGM
+    },
+    {
       path: '/cadastrar-game-master',
       name: 'CadastrarGameMaster',
       component: CadastrarGameMaster
+    },
+    {
+      path: '/gms-cadastrados',
+      name: 'GMsCadastrados',
+      component: GMsCadastrados
     },
     {
       path: '/logout',
