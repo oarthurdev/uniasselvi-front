@@ -32,7 +32,9 @@
                     <th>Nick</th>
                     <th>Cargo</th>
                     <th>Permissao</th>
+                    <th>Data de Cadastro</th>
                     <th>Cadastrado por</th>
+                    <th>Conta ativada?</th>
                 </tr>
               </thead>
               <tbody>
@@ -41,7 +43,9 @@
                     <td class="nick">{{item.nick}}</td>
                     <td class="cargo">{{item.cargo}}</td>
                     <td class="permissao">{{item.permissao}}</td>
+                    <td class="data">{{moment(item.data).format('DD/MM/YYYY')}}</td>
                     <td class="cadPor">{{item.cadPor}}</td>
+                    <td class="activated">{{parseInt(item.activated) ? 'Sim' : 'Não'}}</td>
                   </tr>
               </tbody>
             </table>
@@ -57,6 +61,8 @@
 </div>
 </template>
 <script>
+import moment from 'moment'
+
 export default {
   data () {
     return {
@@ -77,6 +83,11 @@ export default {
           return false
         }
       })
+  },
+  methods: {
+    moment (...args) {
+      return moment(...args)
+    }
   }
 }
 </script>

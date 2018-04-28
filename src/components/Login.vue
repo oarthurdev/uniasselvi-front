@@ -41,11 +41,11 @@
 
     <form v-on:submit="clickBtn" method="POST" name="form-login" id="form-login">
       <div class="form-group has-feedback">
-        <input type="text" v-model="username" name="username" id="username" class="form-control" placeholder="Account Name">
+        <input type="text" v-model="username" name="username" id="username" required class="form-control" placeholder="Account Name">
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="password" v-model="password" name="password" id="password" class="form-control" placeholder="Password">
+        <input type="password" v-model="password" name="password" id="password" required class="form-control" placeholder="Password">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="row">
@@ -62,8 +62,11 @@
       <div class="alert alert-success alert-logando mgtp-5px" name="alert-success" id="alert-success" role="alert">
         <p class="color-black">Dados corretos, você está sendo logado.</p>
       </div>
-      <div class="callout callout-warning" name="alert-carregando" id="alert-carregando" role="alert">
+      <div class="callout callout-warning mgtp-5px" name="alert-carregando" id="alert-carregando" role="alert">
         <p class="color-black">Carregando, espere um pouco....</p>
+      </div>
+      <div class="callout callout-danger mgtp-5px" name="alert-desativado" id="alert-desativado" role="alert">
+        <p class="color-black">Conta desativada.</p>
       </div>
     </form>
 
@@ -86,7 +89,9 @@ export default {
     return {
       msgHello: 'Hello',
       msgBye: 'Bye',
-      loading: false
+      loading: false,
+      'dados': [],
+      'activated': 0
     }
   },
   mounted () {
@@ -119,13 +124,22 @@ export default {
       console.log('submit')
       this.$http.post('login', {username: this.username, password: this.password})
       .then(function (result) {
-        console.log(result)
-        if (result.data && result.data.id) {
-          localStorage.setItem('username', result.data.username)
-          localStorage.setItem('cargo', result.data.cargo)
-          localStorage.setItem('nick', result.data.nick)
-          localStorage.setItem('permissao', result.data.permissao)
-          localStorage.setItem('token', result.data.token)
+        if (result.data.activated.activated === '0') {
+          $('#alert-desativado').show()
+          $('#alert-wrong').hide()
+          $('#alert-carregando').hide()
+          setTimeout(function () {
+            $('#alert-desativado').hide()
+          }, 5000)
+          return false
+        }
+        if (result.data.dados.username) {
+          console.log(result.dados)
+          localStorage.setItem('username', result.data.dados.username)
+          localStorage.setItem('cargo', result.data.dados.cargo)
+          localStorage.setItem('nick', result.data.dados.nick)
+          localStorage.setItem('permissao', result.data.dados.permissao)
+          localStorage.setItem('token', result.data.dados.token)
           window.location.href = '/home?sessao=' + localStorage.getItem('token')
         } else {
           $('#alert-carregando').hide()
@@ -172,6 +186,11 @@ a {
 #alert-wrong{
   display: none;
 }
+
+#alert-desativado{
+  display: none;
+}
+
 
 #alert-success{
   display: none;

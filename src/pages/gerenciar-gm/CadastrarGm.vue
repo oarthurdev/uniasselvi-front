@@ -44,6 +44,13 @@
             </select>
         </div>
         <div class="form-group">
+          <label for="cargoGM">Ativar conta?</label>
+          <select class="form-control" v-model="activated" id="activated" required>
+            <option value="true">Sim</option>
+            <option value="false">Não</option>
+          </select>
+        </div>
+        <div class="form-group">
           <label for="cadPor">Cadastrado por</label>
           <input type="text" class="form-control" v-model="cadastradoPor" id="cadPor" disabled>
         </div>
@@ -74,7 +81,8 @@ export default {
       loading: false,
       cadastradoPor: '',
       permissaoGM: 3,
-      cargoGM: 'Gestor'
+      cargoGM: 'Gestor',
+      activated: true
     }
   },
   mounted () {
@@ -87,7 +95,7 @@ export default {
       let vm = this
       console.log('submit')
       this.$http
-        .post('register-gm-successfull', { idGM: this.idGM, passwordGM: this.passwordGM, nickGM: this.nickGM, cargoGM: this.cargoGM, permissaoGM: this.permissaoGM, cadastradoPor: this.cadastradoPor })
+        .post('register-gm-successfull', { idGM: this.idGM, passwordGM: this.passwordGM, nickGM: this.nickGM, cargoGM: this.cargoGM, permissaoGM: this.permissaoGM, activated: this.activated, cadastradoPor: this.cadastradoPor })
         .then(function (result) {
           console.log(result)
           if (result.data) {
