@@ -10,7 +10,7 @@ import router from './router'
 import EventBus from './lib/eventBus.js'
 import axios from 'axios'
 
-axios.defaults.baseURL = 'http://local.gothicpt.com/painelgmgothicpt'
+axios.defaults.baseURL = 'http://localhost/painelgmgothicpt'
 axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*'
 axios.defaults.headers.common['Content-Type'] = 'application/json'
 axios.defaults.headers.common['Accept'] = 'application/json'

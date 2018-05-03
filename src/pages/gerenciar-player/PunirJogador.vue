@@ -46,13 +46,13 @@
     </div>
     <row>
       <div class="col-md-12">
-        <div class="alert alert-warning alert-carregando mgtp-5px" name="alert-carregando" id="alert-carregando" role="alert">
+        <div class="callout callout-warning alert-carregando mgtp-5px" name="alert-carregando" id="alert-carregando" role="alert">
             <p class="color-black">Carregando, espere um pouco....</p>
         </div>
-        <div class="alert alert-danger uspass-wrong mgtp-5px" name="alert-wrong" id="alert-wrong" role="alert">
+        <div class="callout callout-danger uspass-wrong mgtp-5px" name="alert-wrong" id="alert-wrong" role="alert">
             <p class="color-black">ID inválida, preencha o username corretamene e tente novamente.</p>
           </div>
-          <div class="alert alert-success alert-logando mgtp-5px" name="alert-success" id="alert-success" role="alert">
+          <div class="callout callout-success alert-logando mgtp-5px" name="alert-success" id="alert-success" role="alert">
           <p class="color-black">Player punido com sucesso</p>
         </div>
       </div>

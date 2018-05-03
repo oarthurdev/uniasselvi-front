@@ -1,5 +1,5 @@
 <template>
-<div>
+<div v-if="permissaoLocal == 3">
   <section class="content-header">
     <h1>
       Cadastrar Game Master
@@ -58,20 +58,29 @@
       </form>
     </div>
   </div>
-  <div class="alert alert-danger uspass-wrong mgtp-5px" name="alert-wrong" id="alert-wrong" role="alert">
+  <div class="callout callout-danger uspass-wrong mgtp-5px" name="alert-wrong" id="alert-wrong" role="alert">
   <p class="color-black">Ooops, algo deu errado no cadastro, tente novamente.</p>
   </div>
-  <div class="alert alert-success alert-logando mgtp-5px" name="alert-success" id="alert-success" role="alert">
+  <div class="callout callout-success alert-logando mgtp-5px" name="alert-success" id="alert-success" role="alert">
   <p class="color-black">Game-Master cadastrado com sucesso.</p>
   </div>
-  <div class="alert alert-warning alert-carregando mgtp-5px" name="alert-carregando" id="alert-carregando" role="alert">
+  <div class="callout callout-warning alert-carregando mgtp-5px" name="alert-carregando" id="alert-carregando" role="alert">
   <p class="color-black">Carregando, espere um pouco....</p>
   </div>
+  <div class="callout callout-danger alert-existe mgtp-5px" name="alert-existe" id="alert-existe" role="alert">
+  <p class="color-black">Essa ID já está cadastrada, por favor informe outra.</p>
+  </div>
+  </section>
+</div>
+<div v-else>
+  <section class="content-header">
+    <h1>
+      Você não tem permissão para acessar essa página.
+    </h1>
   </section>
 </div>
 </template>
 <script>
-/* eslint-disable no-unused-vars */
 export default {
   name: 'login',
   data () {
@@ -82,22 +91,32 @@ export default {
       cadastradoPor: '',
       permissaoGM: 3,
       cargoGM: 'Gestor',
-      activated: true
+      activated: true,
+      permissaoLocal: 0,
+      gmRegistrado: ''
     }
   },
   mounted () {
     this.cadastradoPor = localStorage.getItem('username')
+    this.permissaoLocal = localStorage.getItem('permissao')
   },
   methods: {
     clickBtn (e) {
       e.preventDefault()
       $('#alert-carregando').show()
-      let vm = this
       console.log('submit')
       this.$http
         .post('register-gm-successfull', { idGM: this.idGM, passwordGM: this.passwordGM, nickGM: this.nickGM, cargoGM: this.cargoGM, permissaoGM: this.permissaoGM, activated: this.activated, cadastradoPor: this.cadastradoPor })
         .then(function (result) {
-          console.log(result)
+          if (result.data.gmRegistrado !== null) {
+            $('#alert-existe').show()
+            $('#alert-wrong').hide()
+            $('#alert-carregando').hide()
+            setTimeout(function () {
+              $('#alert-existe').hide()
+            }, 5000)
+            return false
+          }
           if (result.data) {
             $('#alert-success').show()
             $('#alert-carregando').hide()
@@ -117,3 +136,9 @@ export default {
   }
 }
 </script>
+<style scoped>
+#alert-existe{
+  display: none;
+}
+</style>
+

@@ -1,0 +1,158 @@
+<template>
+<div>
+<section class="content-header">
+    <h1>
+    User Profile
+    </h1>
+    <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li class="active">User profile</li>
+    </ol>
+</section>
+<section class="content">
+
+      <div class="row">
+        <div class="col-md-3">
+
+          <!-- Profile Image -->
+          <div class="box box-primary">
+            <div class="box-body box-profile">
+              <img class="profile-user-img img-responsive img-circle" src="../../dist/static/img/user2-160x160.jpg" alt="User profile picture">
+
+              <h3 class="profile-username text-center">{{idGM}}</h3>
+
+              <p class="text-muted text-center">{{cargoGM}}</p>
+
+              <ul class="list-group list-group-unbordered">
+                <li class="list-group-item">
+                  <b>Permissão</b> <a class="pull-right">{{permissaoGM}}</a>
+                </li>
+                <!-- <li class="list-group-item">
+                  <b>Membro desde</b> <a class="pull-right">01/05/2018</a>
+                </li> -->
+              </ul>
+
+              <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+        <!-- /.col -->
+        <div class="col-md-9">
+          <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs">
+              <li class="active"><a href="#activity" data-toggle="tab">Activity</a></li>
+              <li><a href="#settings" data-toggle="tab">Settings</a></li>
+            </ul>
+            <div class="tab-content">
+              <div class="tab-pane active" id="activity">
+                <p>Activity</p>
+              </div>
+              <div class="tab-pane" id="settings">
+                <form class="form-horizontal" v-on:submit="clickBtn">
+                  <div class="form-group">
+                    <label for="inputAccName" class="col-sm-2 control-label">Account Name</label>
+
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="inputAccName" v-model="username" v-bind:placeholder="idGM" disabled>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputPassword" class="col-sm-2 control-label">Password</label>
+
+                    <div class="col-sm-10">
+                      <input type="password" class="form-control" id="inputPassword" v-model="passwordNew" placeholder="Password">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputName" class="col-sm-2 control-label">Name</label>
+
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" v-model="name" id="inputName" placeholder="Name">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputNick" class="col-sm-2 control-label">Nick</label>
+
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" v-model="nickNew" id="inputNick" placeholder="Nick">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                      <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <!-- /.tab-pane -->
+            </div>
+            <!-- /.tab-content -->
+          </div>
+            <div class="callout callout-danger uspass-wrong mgtp-5px" name="alert-wrong" id="alert-wrong" role="alert">
+                <p class="color-black">Ooops, algo deu errado no cadastro, tente novamente.</p>
+            </div>
+            <div class="callout callout-success alert-logando mgtp-5px" name="alert-success" id="alert-success" role="alert">
+                <p class="color-black">Dados atualizados com sucesso.</p>
+            </div>
+            <div class="callout callout-warning alert-carregando mgtp-5px" name="alert-carregando" id="alert-carregando" role="alert">
+                <p class="color-black">Carregando, espere um pouco....</p>
+            </div>
+          <!-- /.nav-tabs-custom -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+</section>
+</div>
+</template>
+<script>
+/* eslint-disable no-unused-vars */
+export default {
+  name: 'login',
+  data () {
+    return {
+      msgHello: 'Hello',
+      msgBye: 'Bye',
+      loading: false,
+      idGM: '',
+      cargoGM: '',
+      permissaoGM: 0
+    }
+  },
+  mounted () {
+    this.idGM = localStorage.getItem('username')
+    this.cargoGM = localStorage.getItem('cargo')
+    this.permissaoGM = localStorage.getItem('permissao')
+  },
+  methods: {
+    clickBtn (e) {
+      e.preventDefault()
+      $('#alert-carregando').show()
+      let vm = this
+      console.log('submit')
+      this.$http
+        .post('alterar-dados-gm', {username: this.idGM, passwordNew: this.passwordNew, name: this.name, nickNew: this.nickNew})
+        .then(function (result) {
+          console.log(result)
+          if (result.data) {
+            console.log(result.data)
+            $('#alert-carregando').hide()
+            $('#alert-success').show()
+            setTimeout(function () {
+              $('#alert-success').hide()
+            }, 5000)
+          } else {
+            $('#alert-carregando').hide()
+            $('#alert-wrong').show()
+            setTimeout(function () {
+              $('#alert-wrong').hide()
+            }, 5000)
+            return false
+          }
+        })
+    }
+  }
+}
+</script>

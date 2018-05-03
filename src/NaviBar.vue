@@ -1,12 +1,14 @@
 <template>
   <header class="main-header">
     <!-- Logo -->
-    <a href="/home" class="logo">
-      <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>G</b>PT</span>
-      <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Gothic</b>PT</span>
-    </a>
+    <router-link to="home">
+      <a href="/home" class="logo">
+        <!-- mini logo for sidebar mini 50x50 pixels -->
+        <span class="logo-mini"><b>G</b>PT</span>
+        <!-- logo for regular state and mobile devices -->
+        <span class="logo-lg"><b>Gothic</b>PT</span>
+      </a>
+    </router-link>
 
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -36,8 +38,11 @@
               
               <!-- Menu Footer-->
               <li class="user-footer">
-                <div class="pull-left">
+                <!-- <div class="pull-left">
                   <a href="/profile" class="btn btn-default btn-flat">Profile</a>
+                </div> -->
+                <div class="pull-left">
+                  <router-link to="profile" class="btn btn-default btn-flat">Profile</router-link>
                 </div>
                 <div class="pull-right">
                   <a v-on:click="logout" class="btn btn-default btn-flat">Sign out</a>

@@ -56,10 +56,10 @@
         </div>
         <!-- /.col -->
       </div>
-      <div class="alert alert-danger uspass-wrong mgtp-5px" name="alert-wrong" id="alert-wrong" role="alert">
+      <div class="callout callout-danger uspass-wrong mgtp-5px" name="alert-wrong" id="alert-wrong" role="alert">
         <p class="color-black">Usuário ou senha incorretos.</p>
       </div>
-      <div class="alert alert-success alert-logando mgtp-5px" name="alert-success" id="alert-success" role="alert">
+      <div class="alert callout-success alert-logando mgtp-5px" name="alert-success" id="alert-success" role="alert">
         <p class="color-black">Dados corretos, você está sendo logado.</p>
       </div>
       <div class="callout callout-warning mgtp-5px" name="alert-carregando" id="alert-carregando" role="alert">
@@ -184,6 +184,10 @@ a {
 }
 
 #alert-wrong{
+  display: none;
+}
+
+#alert-existe{
   display: none;
 }
 
