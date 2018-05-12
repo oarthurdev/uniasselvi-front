@@ -140,7 +140,7 @@ export default {
           localStorage.setItem('nick', result.data.dados.nick)
           localStorage.setItem('permissao', result.data.dados.permissao)
           localStorage.setItem('token', result.data.dados.token)
-          window.location.href = '/home?sessao=' + localStorage.getItem('token')
+          window.location.href = '/home'
         } else {
           $('#alert-carregando').hide()
           $('#alert-wrong').show()
@@ -149,10 +149,7 @@ export default {
           }, 5000)
           return false
         }
-      },
-        {
-          headers: {'Authorization': 'Basic YXBpOnBhc3N3b3Jk'}
-        })
+      })
     }
   }
 }

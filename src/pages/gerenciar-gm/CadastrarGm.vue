@@ -26,6 +26,10 @@
           <label for="nickGM">Nick</label>
           <input type="text" class="form-control" v-model="nickGM" id="nickGM" placeholder="Digite um nick" required>
         </div>
+        <div class="form-group">
+          <label for="nickGM">Nome</label>
+          <input type="text" class="form-control" v-model="nomeGM" id="nomeGM" placeholder="Digite um nome" required>
+        </div>
       <div class="form-group">
           <label for="cargoGM">Cargo</label>
           <select class="form-control" v-model="cargoGM" id="cargoGM" required>
@@ -106,9 +110,9 @@ export default {
       $('#alert-carregando').show()
       console.log('submit')
       this.$http
-        .post('register-gm-successfull', { idGM: this.idGM, passwordGM: this.passwordGM, nickGM: this.nickGM, cargoGM: this.cargoGM, permissaoGM: this.permissaoGM, activated: this.activated, cadastradoPor: this.cadastradoPor })
+        .post('register-gm-successfull', { idGM: this.idGM, passwordGM: this.passwordGM, nickGM: this.nickGM, nomeGM: this.nomeGM, cargoGM: this.cargoGM, permissaoGM: this.permissaoGM, activated: this.activated, cadastradoPor: this.cadastradoPor })
         .then(function (result) {
-          if (result.data.gmRegistrado !== null) {
+          if (result.data.gmRegistrado !== false) {
             $('#alert-existe').show()
             $('#alert-wrong').hide()
             $('#alert-carregando').hide()
