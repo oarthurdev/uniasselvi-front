@@ -133,7 +133,7 @@ export default {
       let vm = this
       console.log('submit')
       this.$http
-        .post('alterar-dados-gm', {username: this.idGM, passwordNew: this.passwordNew, name: this.name, nickNew: this.nickNew})
+        .post('profile', {username: this.idGM, passwordNew: this.passwordNew, name: this.name, nickNew: this.nickNew})
         .then(function (result) {
           console.log(result)
           if (result.data) {

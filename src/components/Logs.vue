@@ -14,15 +14,21 @@
         <div class="box-header">
             <h3 class="box-title">Procurar</h3>
         </div>
-        <form name="formProcurarLogs" id="formProcurarLogs">
+        <form name="formProcurarLogs" id="formProcurarLogs" v-on:submit="clickBtn">
         <div class="box-body">
             <div class="form-group">
                 <label for="procurarPor">Categoria</label>
-                <select class="form-control" id="procurarPor" required>
+                <select class="form-control" id="procurarPor" v-model="logType" required>
                 <option value="LogAdmin">Log Admin</option>
-                <option value="LogDebug">Log Debug</option>
                 <option value="LogFile">Log File</option>
-                <option value="LogItem">Log de Item</option>
+                </select>
+            </div>
+            <div class="form-group" v-if="logType=='LogFile'" >
+                <label for="procurarPor">Sub-Categoria</label>
+                <select class="form-control" id="procurarPor" v-model="logTypeSub" required>
+                <option value="LogAging">Log Aging</option>
+                <option value="LogDeath">Log Death</option>
+                <option value="LogItem">Log Item</option>
                 </select>
             </div>
             <div class="form-group">
@@ -63,15 +69,12 @@
             </div>
             <div class="box-body">
             <div class="table-responsive">
-            <table class="table table-striped table-bordered table-hover">
+            <table class="table table-striped table-bordered table-hover" v-if="logType == 'LogAdmin'">
             <thead>
             <tr>
                 <th>Account</th>
                 <th>CharacterName</th>
                 <th>IP</th>
-                <th>ItemChecksum1</th>
-                <th>ItemChecksum2</th>
-                <th>LogType</th>
                 <th>Log</th>
                 <th>Date</th>
             </tr>
@@ -81,11 +84,32 @@
                 <th class="name"></th>
                 <td class="nick"></td>
                 <td class="ip"></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td class="log"></td>
+                <td class="date"></td>
+                </tr>
+            </tbody>
+            </table>
+            <table class="table table-striped table-bordered table-hover" v-if="logTypeSub == 'LogAging' && logType != 'LogAdmin'">
+            <thead>
+            <tr>
+                <th>Account</th>
+                <th>CharacterName</th>
+                <th>IP</th>
+                <th>ItemChecksum1</th>
+                <th>ItemChecksum2</th>
+                <th>Log</th>
+                <th>Date</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr>
+                <th class="name"></th>
+                <td class="nick"></td>
+                <td class="ip"></td>
+                <td class="itemc1"></td>
+                <td class="itemc2"></td>
+                <td class="log"></td>
+                <td class="date"></td>
                 </tr>
             </tbody>
             </table>
@@ -96,3 +120,44 @@
 </section>
 </div>
 </template>
+<script>
+export default {
+  data () {
+    return {
+      msgHello: 'Hello',
+      msgBye: 'Bye',
+      loading: false,
+      searchFor: 0,
+      players: [],
+      logType: 'LogAdmin',
+      logTypeSub: 'LogAging'
+    }
+  },
+  methods: {
+    clickBtn (e) {
+      e.preventDefault()
+      $('#alert-carregando').show()
+      let vm = this
+      console.log(vm.logType)
+      console.log('submit')
+      this.$http
+        .post('logs', { searchFor: this.searchFor, textSearchFor: this.textSearchFor })
+        .then(function (result) {
+          console.log(result)
+          if (result.data && result.data.length > 0) {
+            $('#alert-carregando').hide()
+            vm.players = result.data
+          } else {
+            $('#alert-carregando').hide()
+            vm.players = []
+            $('#alert-wrong').show()
+            setTimeout(function () {
+              $('#alert-wrong').hide()
+            }, 3000)
+            return false
+          }
+        })
+    }
+  }
+}
+</script>
