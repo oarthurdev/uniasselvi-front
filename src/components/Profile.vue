@@ -80,6 +80,13 @@
                     </div>
                   </div>
                   <div class="form-group">
+                    <label for="imagemPerfil" class="col-sm-2 control-label">Imagem de perfil</label>
+
+                    <div class="col-sm-10">
+                      <input type="file" name="imagemPerfil" accept="image/*" @change="onFileChanged">
+                    </div>
+                  </div>
+                  <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
                       <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
@@ -118,7 +125,8 @@ export default {
       loading: false,
       idGM: '',
       cargoGM: '',
-      permissaoGM: 0
+      permissaoGM: 0,
+      selectedFile: null
     }
   },
   mounted () {
@@ -152,7 +160,45 @@ export default {
             return false
           }
         })
+    },
+    onFileChanged (event) {
+      const file = event.target.files[0]
+    },
+    onUpload () {
+      const formData = new FormData()
+      formData.append('myFile', this.selectedFile, this.selectedFile.name)
+      this.$http.post('uplolad-image', this.selectedFile)
     }
   }
 }
 </script>
+<style>
+.dropbox {
+    outline: 2px dashed grey; /* the dash box */
+    outline-offset: -10px;
+    background: lightcyan;
+    color: dimgray;
+    padding: 10px 10px;
+    min-height: 200px; /* minimum height */
+    position: relative;
+    cursor: pointer;
+  }
+
+  .input-file {
+    opacity: 0; /* invisible but it's there! */
+    width: 100%;
+    height: 200px;
+    position: absolute;
+    cursor: pointer;
+  }
+
+  .dropbox:hover {
+    background: lightblue; /* when mouse over to the drop zone, change color */
+  }
+
+  .dropbox p {
+    font-size: 1.2em;
+    text-align: center;
+    padding: 50px 0;
+  }
+</style>

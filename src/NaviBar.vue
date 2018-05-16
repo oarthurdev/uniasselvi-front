@@ -64,6 +64,11 @@ export default {
   name: 'va-navibar',
   methods: {
     logout () {
+      this.$http.post('remove-token', {username: this.currentUser.name})
+      .then(function (result) {
+        return true
+      }
+      )
       localStorage.clear()
       window.location.href = '/login'
     }

@@ -1,5 +1,5 @@
 <template>
-  <div id="app" v-if="!loginType">
+  <div id="app" v-if="!token || token == '0'">
     <login></login>
   </div>  
   <div id="app" v-else>
@@ -26,13 +26,15 @@ export default {
   data () {
     return {
       slideMenuItems: slideMenuItems,
-      loginType: localStorage.getItem('username')
+      loginType: localStorage.getItem('username'),
+      token: localStorage.getItem('token')
     }
   },
   watch: {
     $route (to, from) {
       console.log('change route')
       this.loginType = localStorage.getItem('username')
+      this.token = localStorage.getItem('token')
     }
   },
   created () {
