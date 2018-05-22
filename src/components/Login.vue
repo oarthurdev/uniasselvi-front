@@ -90,7 +90,8 @@ export default {
       msgHello: 'Hello',
       msgBye: 'Bye',
       loading: false,
-      'dados': []
+      'dados': [],
+      'activated': 0
     }
   },
   mounted () {
@@ -123,7 +124,7 @@ export default {
       console.log('submit')
       this.$http.post('login', {username: this.username, password: this.password})
       .then(function (result) {
-        if (result.data.dados.activated === '0') {
+        if (result.data.activated === '0') {
           $('#alert-desativado').show()
           $('#alert-wrong').hide()
           $('#alert-carregando').hide()

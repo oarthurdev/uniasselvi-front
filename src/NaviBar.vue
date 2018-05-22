@@ -45,7 +45,7 @@
                   <router-link to="profile" class="btn btn-default btn-flat">Profile</router-link>
                 </div>
                 <div class="pull-right">
-                  <a v-on:click="logout" class="btn btn-default btn-flat">Sign out</a>
+                  <a v-on:click="clickBtn" class="btn btn-default btn-flat">Sign out</a>
                 </div>
               </li>
             </ul>
@@ -62,15 +62,30 @@ import { mapGetters } from 'vuex'
 
 export default {
   name: 'va-navibar',
+  data () {
+    return {
+      token: '0'
+    }
+  },
+  mounted () {
+    this.token = localStorage.getItem('token')
+  },
   methods: {
-    logout () {
-      this.$http.post('remove-token', {username: this.currentUser.name})
-      .then(function (result) {
-        return true
-      }
-      )
-      localStorage.clear()
-      window.location.href = '/login'
+    clickBtn (e) {
+      e.preventDefault()
+      console.log('submit')
+      this.$http
+        .post('remove-token', {token: this.token})
+        .then(function (result) {
+          console.log(result)
+          if (result.data) {
+            console.log(result.data)
+            localStorage.clear()
+            window.location.href = '/login'
+          } else {
+            console.log('Error')
+          }
+        })
     }
   },
   computed: {
