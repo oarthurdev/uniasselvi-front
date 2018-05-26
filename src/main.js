@@ -22,6 +22,8 @@ axios.interceptors.request.use(function (config) {
   const hash = localStorage.getItem('token')
   if (hash !== '0') {
     config.headers = config.headers || {}
+
+    console.log(config.headers)
     config.headers['Token'] = hash
   } else {
     localStorage.setItem('username', '')
