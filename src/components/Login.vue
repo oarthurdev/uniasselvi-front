@@ -83,9 +83,6 @@
 </div>   -->
 </template>
 <script>
-
-import axios from 'axios'
-
 export default {
   name: 'login',
   data () {
@@ -125,7 +122,7 @@ export default {
       $('#alert-carregando').show()
       e.preventDefault()
       console.log('submit')
-      axios.post('login', {username: this.username, password: this.password})
+      this.$http.post('login', {username: this.username, password: this.password})
       .then(function (result) {
         if (result.data.activated === '0') {
           $('#alert-desativado').show()
