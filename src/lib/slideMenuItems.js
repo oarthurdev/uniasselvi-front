@@ -28,6 +28,14 @@ module.exports = [
       {
         type: 'item',
         icon: 'fa fa-circle-o',
+        name: 'Enviar Itens',
+        router: {
+          name: 'EnviarItens'
+        }
+      },
+      {
+        type: 'item',
+        icon: 'fa fa-circle-o',
         name: 'Punir Jogador',
         router: {
           name: 'PunirJogador'
@@ -88,6 +96,14 @@ module.exports = [
     name: 'Logs',
     router: {
       name: 'Logs'
+    }
+  },
+  {
+    type: 'item',
+    icon: 'fa fa-wrench',
+    name: 'Manutenção',
+    router: {
+      name: 'Maintenance'
     }
   }
 ]

@@ -4,10 +4,12 @@ import Login from 'components/Login.vue'
 import ProcurarJogador from 'pages/gerenciar-player/ProcurarJogador.vue'
 import JogadoresPunidos from 'pages/gerenciar-player/JogadoresPunidos.vue'
 import PunirJogador from 'pages/gerenciar-player/PunirJogador.vue'
+import EnviarItens from 'pages/gerenciar-player/EnviarItens.vue'
 import CadastrarGameMaster from 'pages/gerenciar-gm/CadastrarGm.vue'
 import GMsCadastrados from 'pages/gerenciar-gm/GMsCadastrados.vue'
 import ProfileGM from 'components/Profile.vue'
 import Logs from 'components/Logs.vue'
+import Maintenance from 'components/Maintenance.vue'
 import Logout from 'components/Logout.vue'
 import Hello from 'components/Hello.vue'
 import Sample from 'components/Sample.vue'
@@ -53,9 +55,19 @@ export default new Router({
       component: JogadoresPunidos
     },
     {
+      path: '/enviar-itens',
+      name: 'EnviarItens',
+      component: EnviarItens
+    },
+    {
       path: '/logs',
       name: 'Logs',
       component: Logs
+    },
+    {
+      path: '/maintenance',
+      name: 'Maintenance',
+      component: Maintenance
     },
     {
       path: '/punir-jogador',
