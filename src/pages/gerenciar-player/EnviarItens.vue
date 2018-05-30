@@ -18,11 +18,11 @@
           <div class="box-body">
             <div class="form-group">
                 <label for="name_jogador">Nome do Jogador</label>
-                <input type="text" name="name_jogador" v-model="nameJogador" id="name_jogador" class="form-control" required />
+                <input type="text" name="name_jogador" v-model="nameJogador" id="name_jogador" class="form-control" placeholder="Ex: Reaper" required />
             </div>
             <div class="form-group">
                 <label for="item">Item</label>
-                <input type="text" name="itemr" v-model="item" id="item" class="form-control" required />
+                <input type="text" name="itemr" v-model="item" id="item" class="form-control" placeholder="Ex: wp119" required />
             </div>
             <div class="form-group">
                 <label for="qtdItens">Quantidade</label>
@@ -42,6 +42,7 @@
             <div class="form-group">
                 <label for="classe">Classe</label>
                 <select class="form-control" v-model="classeItem" id="classe" required>
+                <option value="0">Sem Classe</option>
                 <option value="1">Lutador</option>
                 <option value="2">Mecanico</option>
                 <option value="3">Arqueira</option>                            
@@ -78,7 +79,7 @@ export default {
       msgBye: 'Bye',
       loading: false,
       qtdItens: '1',
-      classeItem: '1',
+      classeItem: '0',
       idGM: ''
     }
   },

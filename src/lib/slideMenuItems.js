@@ -48,6 +48,14 @@ module.exports = [
         router: {
           name: 'JogadoresPunidos'
         }
+      },
+      {
+        type: 'item',
+        icon: 'fa fa-circle-o',
+        name: 'Usuários Online',
+        router: {
+          name: 'UsersOnline'
+        }
       }
     ]
   },

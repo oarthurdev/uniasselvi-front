@@ -5,6 +5,7 @@ import ProcurarJogador from 'pages/gerenciar-player/ProcurarJogador.vue'
 import JogadoresPunidos from 'pages/gerenciar-player/JogadoresPunidos.vue'
 import PunirJogador from 'pages/gerenciar-player/PunirJogador.vue'
 import EnviarItens from 'pages/gerenciar-player/EnviarItens.vue'
+import UsersOnline from 'pages/gerenciar-player/UsersOnline.vue'
 import CadastrarGameMaster from 'pages/gerenciar-gm/CadastrarGm.vue'
 import GMsCadastrados from 'pages/gerenciar-gm/GMsCadastrados.vue'
 import ProfileGM from 'components/Profile.vue'
@@ -58,6 +59,11 @@ export default new Router({
       path: '/enviar-itens',
       name: 'EnviarItens',
       component: EnviarItens
+    },
+    {
+      path: '/usuarios-online',
+      name: 'UsersOnline',
+      component: UsersOnline
     },
     {
       path: '/logs',
