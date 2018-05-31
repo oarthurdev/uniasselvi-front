@@ -33,14 +33,14 @@
             </div>
             <div class="form-group">
                 <label for="procurarPor2">Procurar por</label>
-                <select class="form-control" id="procurarPor2" required>
+                <select class="form-control" id="procurarPor2" v-model="procurarPor" required>
                 <option>Account Name</option>
                 <option>Char Name</option>
                 <option>IP Address</option>
                 </select>
             </div>
             <div class="form-group">
-                <input type="text" id="SearchFor1" name="SearchFor1" class="form-control" placeholder="Ex: gothicpt"/>
+                <input type="text" id="SearchFor1" name="SearchFor1" class="form-control" v-model="procurarPor2" placeholder="Ex: gothicpt"/>
             </div>
             <div class="form-group">
             <label>Date</label>
@@ -49,13 +49,13 @@
                 <div class="input-group-addon">
                 <i class="fa fa-calendar"></i>
                 </div>
-                <input type="date" class="form-control pull-right" id="datepicker">
+                <input type="date" class="form-control pull-right" v-model="dataProcurar" required id="datepicker">
             </div>
             
             <!-- /.input group -->
             </div>
             <div class="form-group">
-                <button type="submit" class="form-control btn-primary "><font size="3px" style="padding-right: 3px;">Search</font>&nbsp;<i class="fa fa-search" style="font-size:20px"></i></button>
+                <button type="submit" class="form-control btn-primary"><font size="3px" style="padding-right: 3px;">Search</font>&nbsp;<i class="fa fa-search" style="font-size:20px"></i></button>
             </div>
           </div>
          </form>
@@ -80,12 +80,12 @@
             </tr>
             </thead>
             <tbody>
-                <tr>
-                <th class="name"></th>
-                <td class="nick"></td>
-                <td class="ip"></td>
-                <td class="log"></td>
-                <td class="date"></td>
+                <tr v-for="item in logAdmin" :key="item.accountname">
+                    <th class="name">{{item.accountname}}</th>
+                    <td class="nick">{{item.nickname}}</td>
+                    <td class="ip">{{item.ipaddress}}</td>
+                    <td class="log"></td>
+                    <td class="date">{{item.data}}</td>
                 </tr>
             </tbody>
             </table>
@@ -128,9 +128,10 @@ export default {
       msgBye: 'Bye',
       loading: false,
       searchFor: 0,
-      players: [],
+      logAdmin: [],
       logType: 'LogAdmin',
-      logTypeSub: 'LogAging'
+      logTypeSub: 'LogAging',
+      procurarPor: 'Account Name'
     }
   },
   methods: {
@@ -138,18 +139,17 @@ export default {
       e.preventDefault()
       $('#alert-carregando').show()
       let vm = this
-      console.log(vm.logType)
       console.log('submit')
       this.$http
-        .post('logs', { searchFor: this.searchFor, textSearchFor: this.textSearchFor })
+        .post('logs', { logType: this.logType, logTypeSub: this.logTypeSub, procurarPor: this.procurarPor, procurarPor2: this.procurarPor2, dataProcurar: this.dataProcurar })
         .then(function (result) {
           console.log(result)
-          if (result.data && result.data.length > 0) {
+          if (result.data) {
             $('#alert-carregando').hide()
-            vm.players = result.data
+            vm.logAdmin = result.data
           } else {
             $('#alert-carregando').hide()
-            vm.players = []
+            vm.logAdmin = []
             $('#alert-wrong').show()
             setTimeout(function () {
               $('#alert-wrong').hide()
