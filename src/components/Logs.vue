@@ -84,7 +84,7 @@
                     <th class="name">{{item.accountname}}</th>
                     <td class="nick">{{item.nickname}}</td>
                     <td class="ip">{{item.ipaddress}}</td>
-                    <td class="log"></td>
+                    <td class="log">{{item.log}}</td>
                     <td class="date">{{item.data}}</td>
                 </tr>
             </tbody>

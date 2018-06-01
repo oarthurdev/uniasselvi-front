@@ -21,13 +21,13 @@
         <ul class="nav navbar-nav">
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="../dist/static/img/user2-160x160.jpg" class="user-image" alt="User Image">
+              <img v-bind:src="'http://localhost/painelgmgothicpt/Upload/User/ImagemPerfil/'+photo" class="user-image" alt="User Image">
               <span class="hidden-xs">{{ currentUser.name }}</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="../dist/static/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                <img v-bind:src="'http://localhost/painelgmgothicpt/Upload/User/ImagemPerfil/'+photo" class="img-circle" alt="User Image">
 
                 <p>
                   {{ currentUser.name }}<br>
@@ -64,11 +64,25 @@ export default {
   name: 'va-navibar',
   data () {
     return {
-      token: '0'
+      token: '0',
+      username: '',
+      photo: ''
     }
   },
   mounted () {
+    let vm = this
     this.token = localStorage.getItem('token')
+    this.username = localStorage.getItem('username')
+    this.$http
+        .post('get-photo', {username: this.username})
+        .then(function (result) {
+          if (result.data) {
+            console.log(result.data)
+            vm.photo = result.data.photo
+          } else {
+            console.log('Error')
+          }
+        })
   },
   methods: {
     clickBtn (e) {

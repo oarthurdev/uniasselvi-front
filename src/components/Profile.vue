@@ -17,7 +17,7 @@
           <!-- Profile Image -->
           <div class="box box-primary">
             <div class="box-body box-profile">
-              <img class="profile-user-img img-responsive img-circle" src="../../dist/static/img/user2-160x160.jpg" alt="User profile picture">
+              <img class="profile-user-img img-responsive img-circle" v-bind:src="'http://localhost/painelgmgothicpt/Upload/User/ImagemPerfil/'+photo" alt="User profile picture">
 
               <h3 class="profile-username text-center">{{idGM}}</h3>
 
@@ -50,7 +50,7 @@
                 <p>Activity</p>
               </div>
               <div class="tab-pane" id="settings">
-                <form class="form-horizontal" v-on:submit="clickBtn">
+                <form class="form-horizontal" v-on:submit="clickBtn" enctype="multipart/form-data">
                   <div class="form-group">
                     <label for="inputAccName" class="col-sm-2 control-label">Account Name</label>
 
@@ -83,12 +83,12 @@
                     <label for="imagemPerfil" class="col-sm-2 control-label">Imagem de perfil</label>
 
                     <div class="col-sm-10">
-                      <input type="file" name="imagemPerfil" accept="image/*" @change="onFileChanged">
+                      <input type="file" id="file" ref="file" v-on:change="handleFileUpload()" accept="image/*">
                     </div>
                   </div>
                   <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                      <button type="submit" class="btn btn-primary">Submit</button>
+                      <button type="submit" v-on:click="submitFile()" class="btn btn-primary">Submit</button>
                     </div>
                   </div>
                 </form>
@@ -126,15 +126,49 @@ export default {
       idGM: '',
       cargoGM: '',
       permissaoGM: 0,
-      selectedFile: null
+      selectedFile: null,
+      file: '',
+      token: '0',
+      username: '',
+      photo: ''
     }
   },
   mounted () {
     this.idGM = localStorage.getItem('username')
     this.cargoGM = localStorage.getItem('cargo')
     this.permissaoGM = localStorage.getItem('permissao')
+
+    let vm = this
+    this.token = localStorage.getItem('token')
+    this.username = localStorage.getItem('username')
+    this.$http
+        .post('get-photo', {username: this.username})
+        .then(function (result) {
+          if (result.data) {
+            console.log(result.data)
+            vm.photo = result.data.photo
+          } else {
+            console.log('Error')
+          }
+        })
   },
   methods: {
+    handleFileUpload () {
+      this.file = this.$refs.file.files[0]
+    },
+    submitFile () {
+      let formData = new FormData()
+      formData.append('username', this.idGM)
+      formData.append('file', this.file)
+      this.$http.post('/upload-image', formData
+          ).then(function (result) {
+            console.log(result)
+            console.log('SUCCESS!!')
+          })
+      .catch(function () {
+        console.log('FAILURE!!')
+      })
+    },
     clickBtn (e) {
       e.preventDefault()
       $('#alert-carregando').show()

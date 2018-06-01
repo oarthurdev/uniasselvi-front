@@ -5,7 +5,7 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="../dist/static/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+          <img v-bind:src="'http://localhost/painelgmgothicpt/Upload/User/ImagemPerfil/'+photo" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
           <p>{{ currentUser.name }}</p>
@@ -51,11 +51,33 @@ import VASlideItem from './components/VASlideItem'
 
 export default {
   name: 'va-slider',
+  data () {
+    return {
+      token: '0',
+      username: '',
+      photo: ''
+    }
+  },
   props: {
     slideMenuItems: {
       type: Array,
       default: []
     }
+  },
+  mounted () {
+    let vm = this
+    this.token = localStorage.getItem('token')
+    this.username = localStorage.getItem('username')
+    this.$http
+        .post('get-photo', {username: this.username})
+        .then(function (result) {
+          if (result.data) {
+            console.log(result.data)
+            vm.photo = result.data.photo
+          } else {
+            console.log('Error')
+          }
+        })
   },
   created () {
 
