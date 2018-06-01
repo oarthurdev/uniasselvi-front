@@ -162,12 +162,18 @@ export default {
       formData.append('file', this.file)
       this.$http.post('/upload-image', formData
           ).then(function (result) {
-            console.log(result)
-            console.log('SUCCESS!!')
+            if (result.data) {
+              console.log(result)
+              console.log('SUCCESS!!')
+            } else {
+              $('#alert-success').hide()
+              $('#alert-wrong').show()
+              setTimeout(function () {
+                $('#alert-wrong').hide()
+              }, 5000)
+              return false
+            }
           })
-      .catch(function () {
-        console.log('FAILURE!!')
-      })
     },
     clickBtn (e) {
       e.preventDefault()
