@@ -140,6 +140,7 @@ export default {
           localStorage.setItem('nick', result.data.dados.nick)
           localStorage.setItem('permissao', result.data.dados.permissao)
           localStorage.setItem('token', result.data.dados.token)
+          localStorage.setItem('nome', result.data.dados.nome)
           window.location.href = '/home'
         } else {
           $('#alert-carregando').hide()

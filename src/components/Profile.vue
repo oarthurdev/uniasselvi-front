@@ -62,21 +62,21 @@
                     <label for="inputPassword" class="col-sm-2 control-label">Password</label>
 
                     <div class="col-sm-10">
-                      <input type="password" class="form-control" id="inputPassword" v-model="passwordNew" placeholder="Password">
+                      <input type="password" class="form-control" id="inputPassword" v-model="passwordNew" placeholder="Insira sua nova senha">
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="inputName" class="col-sm-2 control-label">Name</label>
 
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" v-model="name" id="inputName" placeholder="Name">
+                      <input type="text" class="form-control" v-model="name" id="inputName" v-bind:placeholder="nome">
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="inputNick" class="col-sm-2 control-label">Nick</label>
 
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" v-model="nickNew" id="inputNick" placeholder="Nick">
+                      <input type="text" class="form-control" v-model="nickNew" id="inputNick" v-bind:placeholder="nick">
                     </div>
                   </div>
                   <div class="form-group">
@@ -130,13 +130,17 @@ export default {
       file: '',
       token: '0',
       username: '',
-      photo: ''
+      photo: '',
+      nick: '',
+      nome: ''
     }
   },
   mounted () {
     this.idGM = localStorage.getItem('username')
     this.cargoGM = localStorage.getItem('cargo')
     this.permissaoGM = localStorage.getItem('permissao')
+    this.nick = localStorage.getItem('nick')
+    this.nome = localStorage.getItem('nome')
 
     let vm = this
     this.token = localStorage.getItem('token')
