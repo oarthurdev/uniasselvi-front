@@ -47,31 +47,31 @@
                     <td class="data">{{moment(item.data).format('DD/MM/YYYY')}}</td>
                     <td class="cadPor">{{item.cadPor}}</td>
                     <td class="activated">{{parseInt(item.activated) ? 'Sim' : 'Não'}}</td>
-                    <td class="delete text-center"><button type="submit" data-toggle="modal" data-target="#exampleModal" class="btn btn-danger">Excluir</button></td>
-                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                      <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLabel"><b>Confirmação para excluir Game Master</b></h5>
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                          </button>
-                          </div>
-                          <div class="modal-body">
-                          Deseja realmente excluir o usuário <b>{{item.username}}</b> ?
-                          </div>
-                          <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
-                          <button type="button" v-on:click="clickBtn(item.username)" class="btn btn-danger">Sim</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                    <td class="delete text-center"><button type="submit" v-on:click="clickBtn(item.username)" data-toggle="modal" data-target="#exampleModal" class="btn btn-danger">Excluir</button></td>
                   </tr>
               </tbody>
             </table>
             <center>
             </center>
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"><b>Confirmação para excluir Game Master</b></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body">
+                    Deseja realmente excluir esse usuário?
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
+                    <button type="button" class="btn btn-danger" id="confirm" name="confirm">Sim</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
           </div>
           <div class="box-tools pull-right">
             <ul class="pagination pagination-sm inline"><li><a href="#">«</a></li> <li><a href="#">1</a></li> <li><a href="#">2</a></li> <li><a href="#">3</a></li> <li><a href="#">»</a></li></ul>
@@ -89,6 +89,7 @@
 </template>
 <script>
 import moment from 'moment'
+import axios from 'axios'
 
 export default {
   data () {
@@ -113,10 +114,11 @@ export default {
   },
   methods: {
     clickBtn (usernameExcluir) {
-      event.preventDefault()
-      $('#exampleModal').modal('hide')
-      this.$http.post('/delete-game-master', {username: usernameExcluir}
+      $('#confirm').on('click', function () {
+        event.preventDefault()
+        axios.post('/delete-game-master', {username: usernameExcluir}
         ).then(function (result) {
+          $('#exampleModal').modal('hide')
           if (result.data) {
             $('#alert-carregando').show()
             setTimeout(function () {
@@ -133,6 +135,7 @@ export default {
             return false
           }
         })
+      })
     },
     moment (...args) {
       return moment(...args)
