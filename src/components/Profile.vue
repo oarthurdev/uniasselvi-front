@@ -88,7 +88,7 @@
                   </div>
                   <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                      <button type="submit" v-on:click="submitFile()" class="btn btn-primary">Submit</button>
+                      <button type="submit" v-on:click="submitFile()" class="btn btn-primary">Salvar</button>
                     </div>
                   </div>
                 </form>

@@ -35,6 +35,7 @@
                     <th>Data de Cadastro</th>
                     <th>Cadastrado por</th>
                     <th>Conta ativada?</th>
+                    <th class="text-center">Editar</th>
                     <th class="text-center">Deletar</th>
                 </tr>
               </thead>
@@ -47,42 +48,23 @@
                     <td class="data">{{moment(item.data).format('DD/MM/YYYY')}}</td>
                     <td class="cadPor">{{item.cadPor}}</td>
                     <td class="activated">{{parseInt(item.activated) ? 'Sim' : 'Não'}}</td>
+                    <td class="edit text-center"><button type="submit" data-toggle="modal" data-target="#editGm" class="btn btn-default">Editar</button></td>
                     <td class="delete text-center"><button type="submit" v-on:click="clickBtn(item.username)" data-toggle="modal" data-target="#exampleModal" class="btn btn-danger">Excluir</button></td>
                   </tr>
               </tbody>
             </table>
             <center>
             </center>
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel"><b>Confirmação para excluir Game Master</b></h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                    </div>
-                    <div class="modal-body">
-                    Deseja realmente excluir esse usuário?
-                    </div>
-                    <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
-                    <button type="button" class="btn btn-danger" id="confirm" name="confirm">Sim</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            <excluir-gm></excluir-gm>
+            <edit-gm></edit-gm>
           </div>
           <div class="box-tools pull-right">
             <ul class="pagination pagination-sm inline"><li><a href="#">«</a></li> <li><a href="#">1</a></li> <li><a href="#">2</a></li> <li><a href="#">3</a></li> <li><a href="#">»</a></li></ul>
           </div>
         </div>
       </div>
-      <div class="callout callout-warning alert-carregando mgtp-5px" name="alert-carregando" id="alert-carregando" role="alert">
+      <div class="callout callout-danger alert-carregando mgtp-5px" name="alert-carregando" id="alert-carregando" role="alert">
         <p class="color-black">Game-Master excluido com sucesso...</p>
-      </div>
-      <div class="callout callout-danger uspass-wrong mgtp-5px" name="alert-wrong" id="alert-wrong" role="alert">
-        <p class="color-black">Ooops, algo deu errado, tente novamente.</p>
       </div>
     </section>
 </div>
@@ -90,8 +72,11 @@
 <script>
 import moment from 'moment'
 import axios from 'axios'
+import EditGm from '../../components/EditGm.vue'
+import ExcluirGm from '../../components/ExcluirGm.vue'
 
 export default {
+  name: 'gms-cadastrados',
   data () {
     return {
       msgHello: 'Hello',
@@ -128,11 +113,6 @@ export default {
           } else {
             $('#alert-carregando').hide()
             $('#alert-success').hide()
-            $('#alert-wrong').show()
-            setTimeout(function () {
-              $('#alert-wrong').hide()
-            }, 5000)
-            return false
           }
         })
       })
@@ -140,6 +120,10 @@ export default {
     moment (...args) {
       return moment(...args)
     }
+  },
+  components: {
+    'edit-gm': EditGm,
+    'excluir-gm': ExcluirGm
   }
 }
 </script>
