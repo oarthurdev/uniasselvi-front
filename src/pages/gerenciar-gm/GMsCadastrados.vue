@@ -135,7 +135,7 @@ export default {
             $('#editGm').modal('hide')
             $('#alert-edit-success').show()
             setTimeout(function () {
-              $('#alert-carregando').hide()
+              $('#alert-edit-success').hide()
                 // location.reload()
             }, 5000)
             if (result.data) {
