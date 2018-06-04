@@ -48,8 +48,8 @@
                     <td class="data">{{moment(item.data).format('DD/MM/YYYY')}}</td>
                     <td class="cadPor">{{item.cadPor}}</td>
                     <td class="activated">{{parseInt(item.activated) ? 'Sim' : 'Não'}}</td>
-                    <td class="edit text-center"><button type="submit" data-toggle="modal" data-target="#editGm" class="btn btn-default">Editar</button></td>
-                    <td class="delete text-center"><button type="submit" v-on:click="clickBtn(item.username)" data-toggle="modal" data-target="#exampleModal" class="btn btn-danger">Excluir</button></td>
+                    <td class="edit text-center"><button type="submit" v-on:click="editGm(item.username)" data-toggle="modal" data-target="#editGm" class="btn btn-default">Editar</button></td>
+                    <td class="delete text-center"><button type="submit" v-on:click="excluirGm(item.username)" data-toggle="modal" data-target="#exampleModal" class="btn btn-danger">Excluir</button></td>
                   </tr>
               </tbody>
             </table>
@@ -64,7 +64,10 @@
         </div>
       </div>
       <div class="callout callout-danger alert-carregando mgtp-5px" name="alert-carregando" id="alert-carregando" role="alert">
-        <p class="color-black">Game-Master excluido com sucesso...</p>
+        <p class="color-black">Game-Master excluido com sucesso.</p>
+      </div>
+      <div class="callout callout-success alert-edit-success mgtp-5px" name="alert-edit-success" id="alert-edit-success" role="alert">
+        <p class="color-black">Cadastro atualizado com sucesso.</p>
       </div>
     </section>
 </div>
@@ -82,39 +85,71 @@ export default {
       msgHello: 'Hello',
       msgBye: 'Bye',
       loading: false,
-      gmscadastrados: []
+      gmscadastrados: [],
+      excluidoPor: ''
     }
   },
   mounted () {
     let vm = this
-    this.$http.get('gms-cadastrados')
-      .then(function (result) {
-        if (result.data) {
-          vm.gmscadastrados = result.data
-          console.log(result.data)
-        } else {
-          return false
-        }
-      })
+    vm.excluidoPor = localStorage.getItem('username')
+    vm.carregarGm()
   },
   methods: {
-    clickBtn (usernameExcluir) {
+    excluirGm (usernameExcluir) {
+      let vm = this
       $('#confirm').on('click', function () {
         event.preventDefault()
-        axios.post('/delete-game-master', {username: usernameExcluir}
+        axios.post('/delete-game-master', {username: usernameExcluir, excluidoPor: vm.excluidoPor}
         ).then(function (result) {
           $('#exampleModal').modal('hide')
           if (result.data) {
             $('#alert-carregando').show()
+            vm.carregarGm()
             setTimeout(function () {
               $('#alert-carregando').hide()
-              location.reload()
             }, 5000)
           } else {
             $('#alert-carregando').hide()
             $('#alert-success').hide()
           }
         })
+      })
+    },
+    carregarGm () {
+      let vm = this
+      this.$http.get('gms-cadastrados')
+        .then(function (result) {
+          if (result.data) {
+            vm.gmscadastrados = result.data
+            console.log(result.data)
+          } else {
+            return false
+          }
+        })
+    },
+    editGm (usernameExcluir) {
+      $('#confirm2').on('click', function () {
+        event.preventDefault()
+        axios.post('/edit-gm', {username: usernameExcluir}
+          ).then(function (result) {
+            $('#editGm').modal('hide')
+            $('#alert-edit-success').show()
+            setTimeout(function () {
+              $('#alert-carregando').hide()
+                // location.reload()
+            }, 5000)
+            if (result.data) {
+              console.log(result.data)
+              $('#alert-edit-success').show()
+              setTimeout(function () {
+                $('#alert-carregando').hide()
+                // location.reload()
+              }, 5000)
+            } else {
+              $('#alert-carregando').hide()
+              $('#alert-success').hide()
+            }
+          })
       })
     },
     moment (...args) {
@@ -127,3 +162,8 @@ export default {
   }
 }
 </script>
+<style>
+.alert-edit-success{
+  display: none;
+}
+</style>

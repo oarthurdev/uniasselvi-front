@@ -35,6 +35,7 @@
           <select class="form-control" v-model="cargoGM" id="cargoGM" required>
             <option value="Gestor">Gestor</option>
             <option value="Administrador">Administrador</option>
+            <option value="Programador">Programador</option>
             <option value="Supervisor">Supervisor</option>
             <option value="Game Master">Game Master</option>
             </select>

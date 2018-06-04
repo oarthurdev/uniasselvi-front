@@ -1,6 +1,6 @@
 const state = {
   main: {
-    name: localStorage.getItem('nick'),
+    name: localStorage.getItem('username'),
     position: localStorage.getItem('cargo'),
     state: {
       color: '#3c763d',
