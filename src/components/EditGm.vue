@@ -15,10 +15,6 @@
                     <input type="text" class="form-control" id="idGM" v-model="idGM" aria-describedby="idGMHelp" disabled>
                 </div>
                 <div class="form-group">
-                    <label for="passwordGM">Password</label>
-                    <input type="password" class="form-control" v-model="passwordGM" id="passwordGM" placeholder="Digite uma senha" required>
-                </div>
-                <div class="form-group">
                     <label for="nickGM">Nick</label>
                     <input type="text" class="form-control" v-model="nickGM" id="nickGM" placeholder="Digite um nick" required>
                 </div>

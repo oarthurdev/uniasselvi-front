@@ -79,22 +79,6 @@ module.exports = [
         router: {
           name: 'GMsCadastrados'
         }
-      },
-      {
-        type: 'item',
-        icon: 'fa fa-circle-o',
-        name: 'Editar Cadastro',
-        router: {
-          name: 'EditarCadastroGM'
-        }
-      },
-      {
-        type: 'item',
-        icon: 'fa fa-circle-o',
-        name: 'Excluir Cadastro',
-        router: {
-          name: 'ExcluirCadastroGM'
-        }
       }
     ]
   },

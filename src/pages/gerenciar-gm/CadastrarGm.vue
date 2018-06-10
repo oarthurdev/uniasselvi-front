@@ -55,10 +55,6 @@
             <option value="false">Não</option>
           </select>
         </div>
-        <div class="form-group">
-          <label for="cadPor">Cadastrado por</label>
-          <input type="text" class="form-control" v-model="cadastradoPor" id="cadPor" disabled>
-        </div>
         <button type="submit" class="btn btn-primary">Cadastrar</button>
       </form>
     </div>

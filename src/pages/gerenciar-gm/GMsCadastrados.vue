@@ -28,6 +28,7 @@
             <table id="players" class="table table-striped table-bordered table-hover">
               <thead>
                 <tr>
+                    <th></th>
                     <th>Account Name</th>
                     <th>Nick</th>
                     <th>Cargo</th>
@@ -35,12 +36,13 @@
                     <th>Data de Cadastro</th>
                     <th>Cadastrado por</th>
                     <th>Conta ativada?</th>
-                    <th class="text-center">Editar</th>
-                    <th class="text-center">Deletar</th>
+                    <!-- <th class="text-center">Editar</th> -->
+                    <th class="text-center" v-if="permissao == 3">Deletar</th>
                 </tr>
               </thead>
               <tbody>
                   <tr v-for="item in gmscadastrados" :key="item.username">
+                    <th class="foto-perfil"><img class="profile-user-img img-responsive img-circle" style="max-width: 30%" v-bind:src="'http://localhost/painelgmgothicpt/Upload/User/ImagemPerfil/'+item.photo" alt="User profile picture"></th>
                     <th class="accountname">{{item.username}}</th>
                     <td class="nick">{{item.nick}}</td>
                     <td class="cargo">{{item.cargo}}</td>
@@ -48,8 +50,8 @@
                     <td class="data">{{moment(item.data).format('DD/MM/YYYY')}}</td>
                     <td class="cadPor">{{item.cadPor}}</td>
                     <td class="activated">{{parseInt(item.activated) ? 'Sim' : 'Não'}}</td>
-                    <td class="edit text-center"><button type="submit" v-on:click="editGm(item.username)" data-toggle="modal" data-target="#editGm" class="btn btn-default">Editar</button></td>
-                    <td class="delete text-center"><button type="submit" v-on:click="excluirGm(item.username)" data-toggle="modal" data-target="#exampleModal" class="btn btn-danger">Excluir</button></td>
+                    <!-- <td class="edit text-center"><button type="submit" v-on:click="editGm(item.username)" data-toggle="modal" data-target="#editGm" class="btn btn-default">Editar</button></td> -->
+                    <td class="delete text-center" v-if="permissao == 3"><button type="submit" v-on:click="excluirGm(item.username)" data-toggle="modal" data-target="#exampleModal" class="btn btn-danger">Excluir</button></td>
                   </tr>
               </tbody>
             </table>
@@ -63,7 +65,7 @@
           </div>
         </div>
       </div>
-      <div class="callout callout-danger alert-carregando mgtp-5px" name="alert-carregando" id="alert-carregando" role="alert">
+      <div class="callout callout-danger alert-success mgtp-5px" name="alert-success" id="alert-success" role="alert">
         <p class="color-black">Game-Master excluido com sucesso.</p>
       </div>
       <div class="callout callout-success alert-edit-success mgtp-5px" name="alert-edit-success" id="alert-edit-success" role="alert">
@@ -86,12 +88,17 @@ export default {
       msgBye: 'Bye',
       loading: false,
       gmscadastrados: [],
-      excluidoPor: ''
+      excluidoPor: '',
+      permissao: '',
+      photo: '',
+      username: ''
     }
   },
   mounted () {
     let vm = this
+    vm.username = localStorage.getItem('username')
     vm.excluidoPor = localStorage.getItem('username')
+    vm.permissao = localStorage.getItem('permissao')
     vm.carregarGm()
   },
   methods: {
@@ -103,13 +110,12 @@ export default {
         ).then(function (result) {
           $('#exampleModal').modal('hide')
           if (result.data) {
-            $('#alert-carregando').show()
+            $('#alert-success').show()
             vm.carregarGm()
             setTimeout(function () {
-              $('#alert-carregando').hide()
+              $('#alert-success').hide()
             }, 5000)
           } else {
-            $('#alert-carregando').hide()
             $('#alert-success').hide()
           }
         })
