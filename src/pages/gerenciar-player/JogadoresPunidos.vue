@@ -80,7 +80,7 @@ export default {
       total: 0,
       query: {},
       pageNumber: 0,
-      resource_url: 'local.gothicpt.com/painelgmgothicpt/jogadores-punidos',
+      resource_url: 'local.gothicpt.com/painelgm-api-atualizada/jogadores-punidos',
       options: {
         remote_data: 'nested.data',
         remote_current_page: 'nested.current_page',

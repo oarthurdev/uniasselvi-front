@@ -42,7 +42,7 @@
               </thead>
               <tbody>
                   <tr v-for="item in gmscadastrados" :key="item.username">
-                    <th class="foto-perfil"><img class="profile-user-img img-responsive img-circle" style="max-width: 30%" v-bind:src="'http://localhost/painelgmgothicpt/Upload/User/ImagemPerfil/'+item.photo" alt="User profile picture"></th>
+                    <th class="foto-perfil"><img class="profile-user-img img-responsive img-circle" style="max-width: 30%" v-bind:src="'http://localhost/painelgm-api-atualizada/Upload/User/ImagemPerfil/'+item.photo" alt="User profile picture"></th>
                     <th class="accountname">{{item.username}}</th>
                     <td class="nick">{{item.nick}}</td>
                     <td class="cargo">{{item.cargo}}</td>

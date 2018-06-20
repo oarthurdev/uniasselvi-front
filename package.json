@@ -1,8 +1,8 @@
 {
-  "name": "vue2-admin-lte",
-  "version": "0.4.3",
-  "description": "adminLTE to vuejs v2.x converting project",
-  "author": "devjin0617 <devjin0617@gmail.com>",
+  "name": "vue2-admin-gothicpt",
+  "version": "1.0.0",
+  "description": "Painel de Administração GothicPT",
+  "author": "oarthurdev <oarthurdev@gmail.com>",
   "scripts": {
     "mock": "./node_modules/.bin/json-server ./mock-server/index.js",
     "dev-server": "node build/dev-server.js",
