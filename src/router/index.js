@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Login from 'components/Login.vue'
 import ProcurarJogador from 'pages/gerenciar-player/ProcurarJogador.vue'
+import DescobrirID from 'pages/gerenciar-player/DescobrirID.vue'
 import JogadoresPunidos from 'pages/gerenciar-player/JogadoresPunidos.vue'
 import PunirJogador from 'pages/gerenciar-player/PunirJogador.vue'
 import EnviarItens from 'pages/gerenciar-player/EnviarItens.vue'
@@ -11,35 +12,20 @@ import GMsCadastrados from 'pages/gerenciar-gm/GMsCadastrados.vue'
 import ProfileGM from 'components/Profile.vue'
 import Logs from 'components/Logs.vue'
 import Maintenance from 'components/Maintenance.vue'
-import Logout from 'components/Logout.vue'
-import Hello from 'components/Hello.vue'
-import Sample from 'components/Sample.vue'
-import Home from 'examples/Dashboard.v1.vue'
-import DashboardV2 from 'examples/Dashboard.v2.vue'
-import InfoBoxExample from 'examples/InfoBoxExample'
-import ChartExample from 'examples/ChartExample'
-import AlertExample from 'examples/AlertExample'
-import ModalExample from 'examples/ModalExample'
-import WidgetsExample from 'examples/WidgetsExample'
-import APIExample from 'examples/APIExample'
-
-// UI Element Groups
-import General from 'pages/ui-elements/General.vue'
-import Icons from 'pages/ui-elements/Icons.vue'
-import Buttons from 'pages/ui-elements/Buttons.vue'
-import Sliders from 'pages/ui-elements/Sliders.vue'
-import Timeline from 'pages/ui-elements/Timeline.vue'
-import Modals from 'pages/ui-elements/Modals.vue'
-
-// forms
-import GeneralElements from 'pages/forms/GeneralElements.vue'
-import AdvancedElements from 'pages/forms/AdvancedElements.vue'
+import EnviarMensagem from 'pages/diversos/EnviarMensagem.vue'
+import Home from 'components/Dashboard.vue'
 
 Vue.use(Router)
 
 export default new Router({
   mode: 'history',
   routes: [
+    {
+      path: '/',
+      name: 'Home',
+      component: Home,
+      redirect: '/home'
+    },
     {
       path: '/login',
       name: 'Login',
@@ -49,6 +35,11 @@ export default new Router({
       path: '/procurar-jogador',
       name: 'ProcurarJogador',
       component: ProcurarJogador
+    },
+    {
+      path: '/descobrir-id',
+      name: 'DescobrirID',
+      component: DescobrirID
     },
     {
       path: '/jogadores-punidos',
@@ -64,6 +55,11 @@ export default new Router({
       path: '/usuarios-online',
       name: 'UsersOnline',
       component: UsersOnline
+    },
+    {
+      path: '/send-message',
+      name: newFunction(),
+      component: EnviarMensagem
     },
     {
       path: '/logs',
@@ -96,101 +92,14 @@ export default new Router({
       component: GMsCadastrados
     },
     {
-      path: '/logout',
-      name: 'Logout',
-      component: Logout
-    },
-    {
-      path: '/',
-      name: 'Hello',
-      component: Hello,
-      redirect: '/home'
-    },
-    {
-      path: '/sample',
-      name: 'Sample',
-      component: Sample
-    },
-    {
       path: '/home',
       name: 'Home',
       component: Home
-    },
-    {
-      path: '/dashboard/v2',
-      name: 'DashboardV2',
-      component: DashboardV2
-    },
-    {
-      path: '/examples/infobox',
-      name: 'InfoBoxExample',
-      component: InfoBoxExample
-    },
-    {
-      path: '/examples/chart',
-      name: 'ChartExample',
-      component: ChartExample
-    },
-    {
-      path: '/examples/alert',
-      name: 'AlertExample',
-      component: AlertExample
-    },
-    {
-      path: '/examples/modal',
-      name: 'ModalExample',
-      component: ModalExample
-    },
-    {
-      path: '/examples/widgets',
-      name: 'WidgetsExample',
-      component: WidgetsExample
-    },
-    {
-      path: '/examples/api-example',
-      name: 'APIExample',
-      component: APIExample
-    },
-    {
-      path: '/ui-elements/general',
-      name: 'General',
-      component: General
-    },
-    {
-      path: '/ui-elements/icons',
-      name: 'Icons',
-      component: Icons
-    },
-    {
-      path: '/ui-elements/buttons',
-      name: 'Buttons',
-      component: Buttons
-    },
-    {
-      path: '/ui-elements/sliders',
-      name: 'Sliders',
-      component: Sliders
-    },
-    {
-      path: '/ui-elements/timeline',
-      name: 'Timeline',
-      component: Timeline
-    },
-    {
-      path: '/ui-elements/modals',
-      name: 'Modals',
-      component: Modals
-    },
-    {
-      path: '/forms/general-elements',
-      name: 'GeneralElements',
-      component: GeneralElements
-    },
-    {
-      path: '/forms/advanced-elements',
-      name: 'AdvancedElements',
-      component: AdvancedElements
     }
   ],
   linkActiveClass: 'active'
 })
+function newFunction () {
+  return 'EnviarMensagem'
+}
+

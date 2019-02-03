@@ -17,7 +17,7 @@
           <!-- Profile Image -->
           <div class="box box-primary">
             <div class="box-body box-profile">
-              <img class="profile-user-img img-responsive img-circle" v-bind:src="'http://localhost/painelgm-api-atualizada/Upload/User/ImagemPerfil/'+photo" alt="User profile picture">
+              <img class="profile-user-img img-responsive img-circle" v-bind:src="'http://149.56.201.74/painelgm-api-atualizada/Upload/User/ImagemPerfil/'+photo" alt="User profile picture">
 
               <h3 class="profile-username text-center">{{idGM}}</h3>
 

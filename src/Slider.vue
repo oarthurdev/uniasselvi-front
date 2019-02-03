@@ -5,7 +5,7 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img v-bind:src="'http://localhost/painelgm-api-atualizada/Upload/User/ImagemPerfil/'+photo" class="img-circle" alt="User Image">
+          <img v-bind:src="'http://149.56.201.74/painelgm-api-atualizada/Upload/User/ImagemPerfil/'+photo" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
           <p>{{ currentUser.name }}</p>

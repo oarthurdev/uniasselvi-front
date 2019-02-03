@@ -1,38 +1,15 @@
 {
-  "name": "vue2-admin-gothicpt",
+  "name": "admin-gothicpt",
   "version": "1.0.0",
   "description": "Painel de Administração GothicPT",
   "author": "oarthurdev <oarthurdev@gmail.com>",
   "scripts": {
-    "mock": "./node_modules/.bin/json-server ./mock-server/index.js",
     "dev-server": "node build/dev-server.js",
-    "dev": "npm-run-all --parallel mock dev-server",
+    "dev": "npm-run-all --parallel dev-server",
     "build": "node build/build.js",
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
-    "e2e": "node test/e2e/runner.js",
-    "test": "npm run unit && npm run e2e",
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/devjin0617/vue2-admin-lte"
-  },
-  "keywords": [
-    "admin-lte",
-    "vue2-admin-lte",
-    "vue-admin-lte",
-    "vuejs",
-    "vue.js",
-    "jquery",
-    "bootstrap",
-    "vue-jquery",
-    "vue-bootstrap",
-    "front-end"
-  ],
-  "bugs": {
-    "url": "https://github.com/devjin0617/vue2-admin-lte/issues"
-  },
-  "hompage": "https://github.com/devjin0617/vue2-admin-lte#readme",
   "dependencies": {
     "admin-lte": "^2.3.11",
     "axios": "^0.15.3",

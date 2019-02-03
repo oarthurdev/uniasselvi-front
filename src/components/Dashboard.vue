@@ -42,10 +42,6 @@
 
 <script>
 import VASmallBox from '../widgets/VASmallBox.vue'
-import VAChatBox from '../widgets/VAChatBox.vue'
-import VATodoList from '../widgets/VATodoList.vue'
-import VAQuickMail from '../widgets/VAQuickMail.vue'
-import VACalendar from '../widgets/VACalendar.vue'
 import UsuariosRegistrados from '../widgets/UsuariosRegistrados.vue'
 
 export default {
@@ -80,10 +76,6 @@ export default {
   },
   components: {
     'va-small-box': VASmallBox,
-    'va-chat-box': VAChatBox,
-    'va-todo-list': VATodoList,
-    'va-quick-mail': VAQuickMail,
-    'va-calendar': VACalendar,
     'usuarios-registrados': UsuariosRegistrados
   }
 }

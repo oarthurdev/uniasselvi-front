@@ -28,6 +28,14 @@ module.exports = [
       {
         type: 'item',
         icon: 'fa fa-circle-o',
+        name: 'Descobrir ID',
+        router: {
+          name: 'DescobrirID'
+        }
+      },
+      {
+        type: 'item',
+        icon: 'fa fa-circle-o',
         name: 'Enviar Itens',
         router: {
           name: 'EnviarItens'
@@ -78,6 +86,21 @@ module.exports = [
         name: 'GMs Cadastrados',
         router: {
           name: 'GMsCadastrados'
+        }
+      }
+    ]
+  },
+  {
+    type: 'tree',
+    icon: 'fa fa-circle',
+    name: 'Diversos',
+    items: [
+      {
+        type: 'item',
+        icon: 'fa fa-circle-o',
+        name: 'Send message to users',
+        router: {
+          name: 'EnviarMensagem'
         }
       }
     ]

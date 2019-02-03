@@ -33,7 +33,7 @@
                 </div> -->
                 <div class="login-box">
   <div class="login-logo">
-    <a href="/login"><b>Gothic</b>PT</a>
+    <img src="/static/img/logo.png"></img>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
@@ -77,10 +77,6 @@
   </div>
   <!-- /.login-box-body -->
 </div>
-            <!-- </div>            
-        </div>
-    </div>
-</div>   -->
 </template>
 <script>
 export default {
@@ -93,29 +89,6 @@ export default {
       'dados': [],
       'activated': 0
     }
-  },
-  mounted () {
-    // this.$bus.$on('modal-open', (args) => {
-    //   // TODO: args가 올바른지 확인해야함
-    //   this.type = args.type
-    //   this.title = args.title
-    //   this.description = args.description
-    //   this.confirmText = args.confirmText || '저장 후 닫기'
-    //   this.cancelText = args.cancelText || '닫기'
-    //   this.confirmBeforeHook = args.confirmBefore
-    //   this.confirmAfterHook = args.confirmAfter
-    //   this.cancelBeforeHook = args.cancelBefore
-    //   this.cancelAfterHook = args.cancelAfter
-    // })
-    // $('#bsModal').modal('show')
-    // $('#bsModal').on('show.bs.modal', (e) => {
-    // })
-
-    // $('#bsModal').on('hidden.bs.modal', (e) => {
-    //   this.confirmAfterHook()
-    //   this.cancelAfterHook()
-    //   this.resetProperties()
-    // })
   },
   methods: {
     clickBtn (e) {

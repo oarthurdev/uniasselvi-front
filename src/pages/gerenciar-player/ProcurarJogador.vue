@@ -50,9 +50,9 @@
               </thead>
               <tbody>
                   <tr v-for="item in players" :key="item.userid">
-                    <th class="accountname">{{item.userid}}</th>
+                    <th class="accountname">{{item.username}}</th>
                     <td class="email">{{item.email}}</td>
-                    <td class="passwd">{{item.passwd}}</td>
+                    <td class="passwd">{{item.password}}</td>
                     <td class="ip">{{item.ip}}</td>
                     <td class="blocked">{{parseInt(item.BlockChk) ? 'True' : 'False'}}</td>
                   </tr>

@@ -2,7 +2,7 @@
   <header class="main-header">
     <!-- Logo -->
     <router-link to="home">
-      <a href="/home" class="logo">
+      <a class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
         <span class="logo-mini"><b>G</b>PT</span>
         <!-- logo for regular state and mobile devices -->
@@ -21,13 +21,13 @@
         <ul class="nav navbar-nav">
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img v-bind:src="'http://localhost/painelgm-api-atualizada/Upload/User/ImagemPerfil/'+photo" class="user-image" alt="User Image">
+              <img v-bind:src="'http://149.56.201.74/painelgm-api-atualizada/Upload/User/ImagemPerfil/'+photo" class="user-image" alt="User Image">
               <span class="hidden-xs">{{ currentUser.name }}</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img v-bind:src="'http://localhost/painelgm-api-atualizada/Upload/User/ImagemPerfil/'+photo" class="img-circle" alt="User Image">
+                <img v-bind:src="'http://149.56.201.74/painelgm-api-atualizada/Upload/User/ImagemPerfil/'+photo" class="img-circle" alt="User Image">
 
                 <p>
                   {{ currentUser.name }}<br>
