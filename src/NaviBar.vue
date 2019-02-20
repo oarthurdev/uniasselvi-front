@@ -1,7 +1,7 @@
 <template>
   <header class="main-header">
     <!-- Logo -->
-    <router-link to="home">
+    <router-link to="dashboard">
       <a class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
         <span class="logo-mini"><b>G</b>PT</span>
@@ -21,13 +21,13 @@
         <ul class="nav navbar-nav">
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img v-bind:src="'http://localhost/painelgm-api-atualizada/Upload/User/ImagemPerfil/'+photo" class="user-image" alt="User Image">
+              <img v-bind:src="'https://api-admin.gothicpt.com.br/Upload/User/ImagemPerfil/'+photo" class="user-image" alt="User Image">
               <span class="hidden-xs">{{ currentUser.name }}</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img v-bind:src="'http://localhost/painelgm-api-atualizada/Upload/User/ImagemPerfil/'+photo" class="img-circle" alt="User Image">
+                <img v-bind:src="'https://api-admin.gothicpt.com.br/Upload/User/ImagemPerfil/'+photo" class="img-circle" alt="User Image">
 
                 <p>
                   {{ currentUser.name }}<br>

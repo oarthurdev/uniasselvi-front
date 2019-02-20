@@ -3,15 +3,15 @@
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
       <!-- Sidebar user panel -->
-      <div class="user-panel">
+      <!-- <div class="user-panel">
         <div class="pull-left image">
-          <img v-bind:src="'http://localhost/painelgm-api-atualizada/Upload/User/ImagemPerfil/'+photo" class="img-circle" alt="User Image">
+          <img v-bind:src="'https://api-admin.gothicpt.com.br/Upload/User/ImagemPerfil/'+photo" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
           <p>{{ currentUser.name }}</p>
           <a href="#"><i class="fa fa-circle" :style="`color:${currentUser.state.color}`"></i> {{ currentUser.state.name }}</a>
         </div>
-      </div>
+      </div> -->
       <!-- search form -->
       <!-- <form action="#" method="get" class="sidebar-form">
         <div class="input-group">

@@ -35,6 +35,18 @@
   <div class="login-logo">
     <img src="/static/img/logo.png"></img>
   </div>
+        <div class="callout callout-danger uspass-wrong mgtp-5px" name="alert-wrong" id="alert-wrong" role="alert">
+        <p class="color-black">Incorrect username or password, please try again.</p>
+      </div>
+      <div class="alert callout-success alert-logando mgtp-5px" name="alert-success" id="alert-success" role="alert">
+        <p class="color-black">Dados corretos, você está sendo logado.</p>
+      </div>
+      <div class="callout callout-warning mgtp-5px" name="alert-carregando" id="alert-carregando" role="alert">
+        <p class="color-black">Loading, wait a minute...</p>
+      </div>
+      <div class="callout callout-danger mgtp-5px" name="alert-desativado" id="alert-desativado" role="alert">
+        <p class="color-black">Account disabled.</p>
+      </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
     <p class="login-box-msg">Sign in to start your session</p>
@@ -55,18 +67,6 @@
           <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
         </div>
         <!-- /.col -->
-      </div>
-      <div class="callout callout-danger uspass-wrong mgtp-5px" name="alert-wrong" id="alert-wrong" role="alert">
-        <p class="color-black">Incorrect username or password, please try again.</p>
-      </div>
-      <div class="alert callout-success alert-logando mgtp-5px" name="alert-success" id="alert-success" role="alert">
-        <p class="color-black">Dados corretos, você está sendo logado.</p>
-      </div>
-      <div class="callout callout-warning mgtp-5px" name="alert-carregando" id="alert-carregando" role="alert">
-        <p class="color-black">Loading, wait a minute...</p>
-      </div>
-      <div class="callout callout-danger mgtp-5px" name="alert-desativado" id="alert-desativado" role="alert">
-        <p class="color-black">Account disabled.</p>
       </div>
     </form>
 

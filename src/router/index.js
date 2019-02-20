@@ -13,7 +13,7 @@ import ProfileGM from 'components/Profile.vue'
 // import Logs from 'components/Logs.vue'
 // import Maintenance from 'components/Maintenance.vue'
 // import EnviarMensagem from 'pages/diversos/EnviarMensagem.vue'
-import Home from 'components/Dashboard.vue'
+import Dashboard from 'components/Dashboard.vue'
 import SendCoin from 'components/SendCoin.vue'
 
 Vue.use(Router)
@@ -23,8 +23,6 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Home',
-      component: Home,
       redirect: '/login'
     },
     {
@@ -99,8 +97,8 @@ export default new Router({
     },
     {
       path: '/dashboard',
-      name: 'Home',
-      component: Home
+      name: 'Dashboard',
+      component: Dashboard
     }
   ],
   linkActiveClass: 'active'

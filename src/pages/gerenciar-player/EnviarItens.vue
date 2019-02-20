@@ -57,7 +57,7 @@
                   <button type="submit" class="form-control btn-primary">Send</button>
             </div>
             <div class="callout callout-success uspass-wrong mgtp-5px" name="alert-success" id="alert-success" role="alert">
-              <p class="color-black">Sent item successfully</p>
+              <p class="color-black">Item <b>{{item}}</b> was sent successfully to <b>{{nameJogador}}</b>.</p>
             </div>
             <div class="callout callout-danger uspass-wrong mgtp-5px" name="alert-wrong" id="alert-wrong" role="alert">
               <p class="color-black">Item or Nickname not found.</p>
@@ -80,7 +80,9 @@ export default {
       loading: false,
       qtdItens: '1',
       classeItem: '0',
-      idGM: ''
+      idGM: '',
+      nameJogador: '',
+      item: ''
     }
   },
   mounted () {

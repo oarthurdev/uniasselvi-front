@@ -70,7 +70,7 @@
   <p class="color-black">Loading, wait a minute...</p>
   </div>
   <div class="callout callout-danger alert-existe mgtp-5px" name="alert-existe" id="alert-existe" role="alert">
-  <p class="color-black">This ID is already registered, please inform another.</p>
+  <p class="color-black"><b>{{idGM}}</b> is already registered, please inform another.</p>
   </div>
   </section>
 </div>

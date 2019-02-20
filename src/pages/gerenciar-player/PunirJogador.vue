@@ -43,13 +43,22 @@
     <row>
       <div class="col-md-12">
         <div class="callout callout-warning alert-carregando mgtp-5px" name="alert-carregando" id="alert-carregando" role="alert">
-            <p class="color-black">Carregando, espere um pouco....</p>
+            <p class="color-black">Loading, wait a minute...</p>
         </div>
         <div class="callout callout-danger uspass-wrong mgtp-5px" name="alert-wrong" id="alert-wrong" role="alert">
-            <p class="color-black">ID inválida, preencha o username corretamene e tente novamente.</p>
+            <p class="color-black">Username <b>{{idPlayer}}</b> was not found, please enter the correct username.</p>
           </div>
           <div class="callout callout-success alert-logando mgtp-5px" name="alert-success" id="alert-success" role="alert">
-          <p class="color-black">Player punido com sucesso</p>
+          <p class="color-black">Punishment sent to <b>{{idPlayer}}.</b></p>
+        </div>
+        <div class="callout callout-danger alert-logando mgtp-5px alert" name="alert-success-banned" id="alert-success-banned" role="alert">
+          <p class="color-black"><b>{{idPlayer}}</b> successfully banned.</p>
+        </div>
+        <div class="callout callout-success alert-logando mgtp-5px alert" name="alert-success-desbanned" id="alert-success-desbanned" role="alert">
+          <p class="color-black"><b>{{idPlayer}}</b> successfully desbanned.</p>
+        </div>
+        <div class="callout callout-warning alert-logando mgtp-5px alert" name="alert-success-alerted" id="alert-success-alerted" role="alert">
+          <p class="color-black"><b>{{idPlayer}}</b> successfully alerted.</p>
         </div>
       </div>
     </row>
@@ -66,7 +75,10 @@ export default {
       msgBye: 'Bye',
       loading: false,
       banidoPor: '',
-      tipoPunicao: 0
+      tipoPunicao: 0,
+      idPlayer: '',
+      dataDesban: '',
+      motivo: ''
     }
   },
   mounted () {
@@ -83,11 +95,28 @@ export default {
         .then(function (result) {
           console.log(result)
           if (result.data) {
-            $('#alert-carregando').hide()
-            $('#alert-success').show()
-            setTimeout(function () {
+            if (vm.tipoPunicao === 0) {
+              $('#alert-carregando').hide()
               $('#alert-success').hide()
-            }, 5000)
+              $('#alert-success-alerted').show()
+              setTimeout(function () {
+                $('#alert-success-alerted').hide()
+              }, 5000)
+            } else if (vm.tipoPunicao === '1') {
+              $('#alert-carregando').hide()
+              $('#alert-success').hide()
+              $('#alert-success-banned').show()
+              setTimeout(function () {
+                $('#alert-success-banned').hide()
+              }, 5000)
+            } else if (vm.tipoPunicao === '2') {
+              $('#alert-carregando').hide()
+              $('#alert-success').hide()
+              $('#alert-success-desbanned').show()
+              setTimeout(function () {
+                $('#alert-success-desbanned').hide()
+              }, 5000)
+            }
           } else {
             $('#alert-carregando').hide()
             $('#alert-wrong').show()

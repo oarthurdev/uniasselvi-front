@@ -5,7 +5,7 @@
     User Profile
     </h1>
     <ol class="breadcrumb">
-    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
     <li class="active">User profile</li>
     </ol>
 </section>
@@ -17,7 +17,7 @@
           <!-- Profile Image -->
           <div class="box box-primary">
             <div class="box-body box-profile">
-              <img class="profile-user-img img-responsive img-circle" v-bind:src="'http://localhost/painelgm-api-atualizada/Upload/User/ImagemPerfil/'+photo" alt="User profile picture">
+              <img class="profile-user-img img-responsive img-circle" v-bind:src="'https://api-admin.gothicpt.com.br/Upload/User/ImagemPerfil/'+photo" alt="User profile picture">
 
               <h3 class="profile-username text-center">{{idGM}}</h3>
 
