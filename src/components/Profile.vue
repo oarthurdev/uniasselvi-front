@@ -69,21 +69,21 @@
                     </div>
                   </div>
                   <div class="form-group">
-                        <label for="inputPw" class="col-sm-2 control-label">Senha</label>
+                        <label for="inputPw" class="col-sm-2 control-label">Password</label>
                         <div class="col-sm-10">
-                          <input name="cpw" type="password" class="form-control" id="inputPw" v-model="senhaAtual" placeholder="Insira sua senha atual">
+                          <input name="cpw" type="password" class="form-control" id="inputPw" v-model="senhaAtual" placeholder="Enter your current password">
                         </div>
                       </div>
                       <div class="form-group">
-                        <label for="inputExperience" class="col-sm-2 control-label">Nova Senha</label>
+                        <label for="inputExperience" class="col-sm-2 control-label">New Password</label>
                         <div class="col-sm-10">
-                          <input name="pw" type="password" class="form-control" id="inputPw" v-model="novaSenha1" placeholder="Insira uma nova senha">
+                          <input name="pw" type="password" class="form-control" id="inputPw" v-model="novaSenha1" placeholder="Enter a new password">
                         </div>
                       </div>
                       <div class="form-group">
-                        <label for="inputSkills" class="col-sm-2 control-label">Repetir Nova Senha</label>
+                        <label for="inputSkills" class="col-sm-2 control-label">Repeat New Password</label>
                         <div class="col-sm-10">
-                          <input name="rpw" type="password" class="form-control" id="inputSkills" v-model="novaSenha2" placeholder="Repita a nova senha">
+                          <input name="rpw" type="password" class="form-control" id="inputSkills" v-model="novaSenha2" placeholder="Confirm password">
                         </div>
                       </div>
                     
@@ -107,6 +107,12 @@
           </div>
             <div class="callout callout-danger uspass-wrong mgtp-5px" name="alert-wrong" id="alert-wrong" role="alert">
                 <p class="color-black">Oops, something went wrong, try again later.</p>
+            </div>
+            <div class="callout callout-danger uspass-wrong mgtp-5px alert" name="alert-wrong-current-pass" id="alert-wrong-current-pass" role="alert">
+                <p class="color-black">The password field does not match your current password.</p>
+            </div>
+            <div class="callout callout-danger uspass-wrong mgtp-5px alert" name="alert-wrong-pass-dont-match" id="alert-wrong-pass-dont-match" role="alert">
+                <p class="color-black">Passwords don't match.</p>
             </div>
             <div class="callout callout-success alert-logando mgtp-5px" name="alert-success" id="alert-success" role="alert">
                 <p class="color-black">Successfully updated.</p>
@@ -199,20 +205,36 @@ export default {
         .post('profile', {username: this.idGM, senhaAtual: this.senhaAtual, novaSenha1: this.novaSenha1, novaSenha2: this.novaSenha2, name: this.name, nickNew: this.nickNew})
         .then(function (result) {
           console.log(result)
-          if (result.data) {
+          if (result.data.samePassword === false) {
             $('#alert-carregando').hide()
             $('#alert-wrong').hide()
-            $('#alert-success').show()
+            $('#alert-wrong-current-pass').show()
             setTimeout(function () {
-              $('#alert-success').hide()
+              $('#alert-wrong-current-pass').hide()
+            }, 5000)
+          } else if (result.data.diffPass === true) {
+            $('#alert-carregando').hide()
+            $('#alert-wrong').hide()
+            $('#alert-wrong-pass-dont-match').show()
+            setTimeout(function () {
+              $('#alert-wrong-pass-dont-match').hide()
             }, 5000)
           } else {
-            $('#alert-carregando').hide()
-            $('#alert-wrong').show()
-            setTimeout(function () {
+            if (result.data) {
+              $('#alert-carregando').hide()
               $('#alert-wrong').hide()
-            }, 5000)
-            return false
+              $('#alert-success').show()
+              setTimeout(function () {
+                $('#alert-success').hide()
+              }, 5000)
+            } else {
+              $('#alert-carregando').hide()
+              $('#alert-wrong').show()
+              setTimeout(function () {
+                $('#alert-wrong').hide()
+              }, 5000)
+              return false
+            }
           }
         })
     },
@@ -239,6 +261,9 @@ export default {
     cursor: pointer;
   }
 
+.alert {
+  display: none;
+}
   .input-file {
     opacity: 0; /* invisible but it's there! */
     width: 100%;
