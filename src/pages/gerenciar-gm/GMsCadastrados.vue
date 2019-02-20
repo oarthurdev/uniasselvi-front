@@ -2,27 +2,15 @@
 <div>
   <section class="content-header">
     <h1>
-      Game Master's Cadastrados
+      Registered Staff Members
     </h1>
     <ol class="breadcrumb">
-      <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-      <li class="active">GMs Cadastrados</li>
+      <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+      <li class="active">Registered Staff Members</li>
     </ol>
   </section>
   <section class="content">
     <div class="box box-warning" data-widget="box-widget">
-        <div class="box-header">
-          <h3 class="box-title"></h3>
-          <div class="box-tools">
-            <div class="input-group input-group-sm" style="width: 150px;">
-              <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
-
-              <div class="input-group-btn">
-                <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-              </div>
-            </div>
-          </div>
-        </div>
         <div class="box-body">
           <div class="table-responsive">
             <table id="players" class="table table-striped table-bordered table-hover">
@@ -31,37 +19,34 @@
                     <th></th>
                     <th>Account Name</th>
                     <th>Nick</th>
-                    <th>Cargo</th>
-                    <th>Permissao</th>
-                    <th>Data de Cadastro</th>
-                    <th>Cadastrado por</th>
-                    <th>Conta ativada?</th>
+                    <th>Role</th>
+                    <th>Permission</th>
+                    <th>Registration date</th>
+                    <th>Registered by</th>
+                    <th>Account activated?</th>
                     <!-- <th class="text-center">Editar</th> -->
-                    <th class="text-center" v-if="permissao == 3">Deletar</th>
+                    <th class="text-center" v-if="permissao >= 3">Action</th>
                 </tr>
               </thead>
               <tbody>
                   <tr v-for="item in gmscadastrados" :key="item.username">
-                    <th class="foto-perfil"><img class="profile-user-img img-responsive img-circle" style="max-width: 30%" v-bind:src="'http://149.56.201.74/painelgm-api-atualizada/Upload/User/ImagemPerfil/'+item.photo" alt="User profile picture"></th>
+                    <th class="foto-perfil"><img class="profile-user-img img-responsive img-circle" style="max-width: 30%" v-bind:src="'http://localhost/painelgm-api-atualizada/Upload/User/ImagemPerfil/'+item.photo" alt="User profile picture"></th>
                     <th class="accountname">{{item.username}}</th>
                     <td class="nick">{{item.nick}}</td>
                     <td class="cargo">{{item.cargo}}</td>
                     <td class="permissao">{{item.permissao}}</td>
                     <td class="data">{{moment(item.data).format('DD/MM/YYYY')}}</td>
                     <td class="cadPor">{{item.cadPor}}</td>
-                    <td class="activated">{{parseInt(item.activated) ? 'Sim' : 'Não'}}</td>
+                    <td class="activated">{{parseInt(item.activated) ? 'Yes' : 'No'}}</td>
                     <!-- <td class="edit text-center"><button type="submit" v-on:click="editGm(item.username)" data-toggle="modal" data-target="#editGm" class="btn btn-default">Editar</button></td> -->
-                    <td class="delete text-center" v-if="permissao == 3"><button type="submit" v-on:click="excluirGm(item.username)" data-toggle="modal" data-target="#exampleModal" class="btn btn-danger">Excluir</button></td>
+                    <td class="delete text-center" v-if="permissao >= 3"><button type="submit" v-on:click="excluirGm(item.username)" data-toggle="modal" data-target="#exampleModal" class="btn btn-danger">Delete</button></td>
                   </tr>
               </tbody>
             </table>
             <center>
             </center>
-            <excluir-gm></excluir-gm>
+            <excluir-gm v-bind:username="usernameSelected"></excluir-gm>
             <edit-gm></edit-gm>
-          </div>
-          <div class="box-tools pull-right">
-            <ul class="pagination pagination-sm inline"><li><a href="#">«</a></li> <li><a href="#">1</a></li> <li><a href="#">2</a></li> <li><a href="#">3</a></li> <li><a href="#">»</a></li></ul>
           </div>
         </div>
       </div>
@@ -91,7 +76,8 @@ export default {
       excluidoPor: '',
       permissao: '',
       photo: '',
-      username: ''
+      username: '',
+      usernameSelected: ''
     }
   },
   mounted () {
@@ -104,6 +90,7 @@ export default {
   methods: {
     excluirGm (usernameExcluir) {
       let vm = this
+      vm.usernameSelected = usernameExcluir
       $('#confirm').on('click', function () {
         event.preventDefault()
         axios.post('/delete-game-master', {username: usernameExcluir, excluidoPor: vm.excluidoPor}

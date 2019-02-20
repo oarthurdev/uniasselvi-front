@@ -2,11 +2,11 @@
 <div>
   <section class="content-header">
     <h1>
-      Jogadores Punidos
+      Punished Players
     </h1>
     <ol class="breadcrumb">
-      <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-      <li class="active">Jogadores Punidos</li>
+      <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+      <li class="active">Punished Players</li>
     </ol>
   </section>
   <section class="content">
@@ -30,11 +30,11 @@
               <thead>
                 <tr>
                     <th>Account Name</th>
-                    <th>Punição</th>
-                    <th>Motivo</th>
-                    <th>Data de desban</th>
-                    <th>Data do banimento</th>
-                    <th>Banido por</th>
+                    <th>Punishment</th>
+                    <th>Reason</th>
+                    <th>Date of desban</th>
+                    <th>Date of ban</th>
+                    <th>Banned by</th>
                 </tr>
               </thead>
               <tbody>

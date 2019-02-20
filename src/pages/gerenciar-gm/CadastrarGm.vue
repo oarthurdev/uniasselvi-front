@@ -1,13 +1,13 @@
 <template>
-<div v-if="permissaoLocal == 3">
+<div v-if="permissaoLocal >= 3">
   <section class="content-header">
     <h1>
-      Cadastrar Game Master
-      <small>Informe os dados abaixo</small>
+      Register Staff Member
+      <small>Enter the data below</small>
     </h1>
     <ol class="breadcrumb">
-      <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-      <li class="active">Cadastrar Game Master</li>
+      <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+      <li class="active">Register Staff Member</li>
     </ol>
   </section>
   <section class="content">
@@ -16,67 +16,68 @@
         <form id="form-cadastrar-gm" name="form-cadastrar-gm" v-on:submit="clickBtn">
         <div class="form-group">
           <label for="idGM">Account</label>
-          <input type="text" class="form-control" id="idGM" v-model="idGM" aria-describedby="idGMHelp" placeholder="Digite um username" required>
+          <input type="text" class="form-control" id="idGM" v-model="idGM" aria-describedby="idGMHelp" placeholder="Enter a username" required>
         </div>
         <div class="form-group">
           <label for="passwordGM">Password</label>
-          <input type="password" class="form-control" v-model="passwordGM" id="passwordGM" placeholder="Digite uma senha" required>
+          <input type="password" class="form-control" v-model="passwordGM" id="passwordGM" placeholder="Enter a password" required>
         </div>
         <div class="form-group">
           <label for="nickGM">Nick</label>
-          <input type="text" class="form-control" v-model="nickGM" id="nickGM" placeholder="Digite um nick" required>
+          <input type="text" class="form-control" v-model="nickGM" id="nickGM" placeholder="Enter a nickname" required>
         </div>
         <div class="form-group">
-          <label for="nickGM">Nome</label>
-          <input type="text" class="form-control" v-model="nomeGM" id="nomeGM" placeholder="Digite um nome" required>
+          <label for="nickGM">Name</label>
+          <input type="text" class="form-control" v-model="nomeGM" id="nomeGM" placeholder="Enter a name" required>
         </div>
       <div class="form-group">
-          <label for="cargoGM">Cargo</label>
+          <label for="cargoGM">Role</label>
           <select class="form-control" v-model="cargoGM" id="cargoGM" required>
-            <option value="Gestor">Gestor</option>
-            <option value="Administrador">Administrador</option>
-            <option value="Programador">Programador</option>
+            <option value="Manager">Manager</option>
+            <option value="Administrator">Administrator</option>
+            <option value="Programmer">Programmer</option>
             <option value="Supervisor">Supervisor</option>
             <option value="Game Master">Game Master</option>
             </select>
         </div>
         <div class="form-group" id="hidePermission">
-          <label for="permissaoGM">Permissao</label>
+          <label for="permissaoGM">Permission</label>
           <select class="form-control" v-model="permissaoGM" id="permissaoGM" required>
+            <option value="4">4</option>
             <option value="3">3</option>
             <option value="2">2</option>
             <option value="1">1</option>
             </select>
         </div>
         <div class="form-group">
-          <label for="cargoGM">Ativar conta?</label>
+          <label for="cargoGM">Enable account?</label>
           <select class="form-control" v-model="activated" id="activated" required>
-            <option value="true">Sim</option>
-            <option value="false">Não</option>
+            <option value="true">Yes</option>
+            <option value="false">No</option>
           </select>
         </div>
-        <button type="submit" class="btn btn-primary">Cadastrar</button>
+        <button type="submit" class="btn btn-primary">Register</button>
       </form>
     </div>
   </div>
   <div class="callout callout-danger uspass-wrong mgtp-5px" name="alert-wrong" id="alert-wrong" role="alert">
-  <p class="color-black">Ooops, algo deu errado no cadastro, tente novamente.</p>
+  <p class="color-black">Oops, something went wrong, try again later.</p>
   </div>
   <div class="callout callout-success alert-logando mgtp-5px" name="alert-success" id="alert-success" role="alert">
-  <p class="color-black">Game-Master cadastrado com sucesso.</p>
+  <p class="color-black"><b>{{idGM}}</b> successfully registered.</p>
   </div>
   <div class="callout callout-warning alert-carregando mgtp-5px" name="alert-carregando" id="alert-carregando" role="alert">
-  <p class="color-black">Carregando, espere um pouco....</p>
+  <p class="color-black">Loading, wait a minute...</p>
   </div>
   <div class="callout callout-danger alert-existe mgtp-5px" name="alert-existe" id="alert-existe" role="alert">
-  <p class="color-black">Essa ID já está cadastrada, por favor informe outra.</p>
+  <p class="color-black">This ID is already registered, please inform another.</p>
   </div>
   </section>
 </div>
 <div v-else>
   <section class="content-header">
     <h1>
-      Você não tem permissão para acessar essa página.
+      You do not have permission to access this page.
     </h1>
   </section>
 </div>
@@ -90,11 +91,12 @@ export default {
       msgBye: 'Bye',
       loading: false,
       cadastradoPor: '',
-      permissaoGM: 3,
-      cargoGM: 'Gestor',
+      permissaoGM: 2,
+      cargoGM: 'Game Master',
       activated: true,
       permissaoLocal: 0,
-      gmRegistrado: ''
+      gmRegistrado: '',
+      idGM: ''
     }
   },
   mounted () {

@@ -6,14 +6,15 @@ import DescobrirID from 'pages/gerenciar-player/DescobrirID.vue'
 import JogadoresPunidos from 'pages/gerenciar-player/JogadoresPunidos.vue'
 import PunirJogador from 'pages/gerenciar-player/PunirJogador.vue'
 import EnviarItens from 'pages/gerenciar-player/EnviarItens.vue'
-import UsersOnline from 'pages/gerenciar-player/UsersOnline.vue'
+// import UsersOnline from 'pages/gerenciar-player/UsersOnline.vue'
 import CadastrarGameMaster from 'pages/gerenciar-gm/CadastrarGm.vue'
 import GMsCadastrados from 'pages/gerenciar-gm/GMsCadastrados.vue'
 import ProfileGM from 'components/Profile.vue'
-import Logs from 'components/Logs.vue'
-import Maintenance from 'components/Maintenance.vue'
-import EnviarMensagem from 'pages/diversos/EnviarMensagem.vue'
+// import Logs from 'components/Logs.vue'
+// import Maintenance from 'components/Maintenance.vue'
+// import EnviarMensagem from 'pages/diversos/EnviarMensagem.vue'
 import Home from 'components/Dashboard.vue'
+import SendCoin from 'components/SendCoin.vue'
 
 Vue.use(Router)
 
@@ -24,7 +25,7 @@ export default new Router({
       path: '/',
       name: 'Home',
       component: Home,
-      redirect: '/home'
+      redirect: '/login'
     },
     {
       path: '/login',
@@ -32,47 +33,52 @@ export default new Router({
       component: Login
     },
     {
-      path: '/procurar-jogador',
+      path: '/search-user',
       name: 'ProcurarJogador',
       component: ProcurarJogador
     },
     {
-      path: '/descobrir-id',
+      path: '/send-coin',
+      name: 'SendCoin',
+      component: SendCoin
+    },
+    {
+      path: '/find-id',
       name: 'DescobrirID',
       component: DescobrirID
     },
     {
-      path: '/jogadores-punidos',
+      path: '/punished-players',
       name: 'JogadoresPunidos',
       component: JogadoresPunidos
     },
     {
-      path: '/enviar-itens',
+      path: '/send-item',
       name: 'EnviarItens',
       component: EnviarItens
     },
+    // {
+    //   path: '/usuarios-online',
+    //   name: 'UsersOnline',
+    //   component: UsersOnline
+    // },
+    // {
+    //   path: '/send-message',
+    //   name: newFunction(),
+    //   component: EnviarMensagem
+    // },
+    // {
+    //   path: '/logs',
+    //   name: 'Logs',
+    //   component: Logs
+    // },
+    // {
+    //   path: '/maintenance',
+    //   name: 'Maintenance',
+    //   component: Maintenance
+    // },
     {
-      path: '/usuarios-online',
-      name: 'UsersOnline',
-      component: UsersOnline
-    },
-    {
-      path: '/send-message',
-      name: newFunction(),
-      component: EnviarMensagem
-    },
-    {
-      path: '/logs',
-      name: 'Logs',
-      component: Logs
-    },
-    {
-      path: '/maintenance',
-      name: 'Maintenance',
-      component: Maintenance
-    },
-    {
-      path: '/punir-jogador',
+      path: '/punish-player',
       name: 'PunirJogador',
       component: PunirJogador
     },
@@ -82,24 +88,24 @@ export default new Router({
       component: ProfileGM
     },
     {
-      path: '/cadastrar-game-master',
+      path: '/register-staff-member',
       name: 'CadastrarGameMaster',
       component: CadastrarGameMaster
     },
     {
-      path: '/gms-cadastrados',
+      path: '/registered-staff-members',
       name: 'GMsCadastrados',
       component: GMsCadastrados
     },
     {
-      path: '/home',
+      path: '/dashboard',
       name: 'Home',
       component: Home
     }
   ],
   linkActiveClass: 'active'
 })
-function newFunction () {
-  return 'EnviarMensagem'
-}
+// function newFunction () {
+//   return 'EnviarMensagem'
+// }
 

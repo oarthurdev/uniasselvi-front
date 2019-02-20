@@ -2,32 +2,32 @@
 <div>
     <section class="content-header">
       <h1>
-        Descobrir ID
-        <small>Informe os dados abaixo</small>
+        Find ID
+        <small>Enter the data below</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Descobrir ID</li>
+        <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li class="active">Find ID</li>
       </ol>
     </section>
     <section class="content">
       <div class="box box-primary" data-widget="box-widget">
         <div class="box-header">
-          <h3 class="box-title">Procurar</h3>
+          <h3 class="box-title">Search</h3>
         </div>
         <form name="formProcurarJogador" v-on:submit="clickBtn" method="POST" id="formDescobrirID">
           <div class="box-body">
               <div class="form-group">
-                  <input type="text" name="nick" v-model="nick" id="nick" class="form-control" placeholder="Digite o nick do jogador" required />
+                  <input type="text" name="nick" v-model="nick" id="nick" class="form-control" placeholder="Enter the player's nickname" required />
             </div>
             <div class="form-group">
                   <button type="submit" class="form-control btn-primary"><font size="3px" style="padding-right: 3px;">Search</font>&nbsp;<i class="fa fa-search" style="font-size:20px"></i></button>
             </div>
             <div class="callout callout-danger uspass-wrong mgtp-5px" name="alert-wrong" id="alert-wrong" role="alert">
-              <p class="color-black">Nenhum resultado.</p>
+              <p class="color-black">No results, try another search term.</p>
             </div>
             <div class="callout callout-warning alert-carregando mgtp-5px" name="alert-carregando" id="alert-carregando" role="alert">
-              <p class="color-black">Carregando, espere um pouco....</p>
+              <p class="color-black">Loading, please wait a minute...</p>
             </div>
           </div>
         </form>
@@ -46,7 +46,7 @@
         ID : <b>{{id}}</b>
         </div>
         <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Confirmar</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
         </div>
         </div>
     </div>

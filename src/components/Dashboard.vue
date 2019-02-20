@@ -6,8 +6,8 @@
           color="yellow"
           icon="ion-person-add"
           v-bind:title="contasRegistradas"
-          description="Contas Registradas"
-          moreText="Mais Informações">
+          description="Registered Accounts"
+          moreText="More Information">
         </va-small-box>
       </div>
       <div class="col-md-4 col-sm-6 col-xs-12">
@@ -15,8 +15,8 @@
           color="green"
           icon="ion-person-add"
           v-bind:title="gmsRegistrados"
-          description="GMs Cadastrados"
-          moreText="Mais Informações">
+          description="Registered Staff Members"
+          moreText="More Information">
         </va-small-box>
       </div>
       <div class="col-md-4 col-sm-6 col-xs-12">
@@ -24,8 +24,8 @@
           color="red"
           icon="ion-person"
           v-bind:title="contasBanidas"
-          description="Usuários Banidos"
-          moreText="Mais Informações">
+          description="Banned Users"
+          moreText="More Information">
         </va-small-box>
       </div>
     </row>

@@ -17,7 +17,7 @@
           <!-- Profile Image -->
           <div class="box box-primary">
             <div class="box-body box-profile">
-              <img class="profile-user-img img-responsive img-circle" v-bind:src="'http://149.56.201.74/painelgm-api-atualizada/Upload/User/ImagemPerfil/'+photo" alt="User profile picture">
+              <img class="profile-user-img img-responsive img-circle" v-bind:src="'http://localhost/painelgm-api-atualizada/Upload/User/ImagemPerfil/'+photo" alt="User profile picture">
 
               <h3 class="profile-username text-center">{{idGM}}</h3>
 
@@ -25,7 +25,7 @@
 
               <ul class="list-group list-group-unbordered">
                 <li class="list-group-item">
-                  <b>Permissão</b> <a class="pull-right">{{permissaoGM}}</a>
+                  <b>Permission</b> <a class="pull-right">{{permissaoGM}}</a>
                 </li>
                 <!-- <li class="list-group-item">
                   <b>Membro desde</b> <a class="pull-right">01/05/2018</a>
@@ -42,14 +42,10 @@
         <div class="col-md-9">
           <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
-              <li class="active"><a href="#activity" data-toggle="tab">Activity</a></li>
-              <li><a href="#settings" data-toggle="tab">Settings</a></li>
+              <li class="active"><a href="#settings" data-toggle="tab">Settings</a></li>
             </ul>
             <div class="tab-content">
-              <div class="tab-pane active" id="activity">
-                <p>Activity</p>
-              </div>
-              <div class="tab-pane" id="settings">
+              <div class="tab-pane active" id="settings">
                 <form class="form-horizontal" v-on:submit="clickBtn" enctype="multipart/form-data">
                   <div class="form-group">
                     <label for="inputAccName" class="col-sm-2 control-label">Account Name</label>
@@ -59,28 +55,40 @@
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="inputPassword" class="col-sm-2 control-label">Password</label>
+                  <label for="inputName" class="col-sm-2 control-label">Name</label>
 
                     <div class="col-sm-10">
-                      <input type="password" class="form-control" id="inputPassword" v-model="passwordNew" placeholder="Insira sua nova senha">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="inputName" class="col-sm-2 control-label">Name</label>
-
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" v-model="name" id="inputName" v-bind:placeholder="nome">
+                      <input type="text" class="form-control" v-model="name" id="inputName" v-bind:placeholder="nome" disabled>
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="inputNick" class="col-sm-2 control-label">Nick</label>
 
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" v-model="nickNew" id="inputNick" v-bind:placeholder="nick">
+                      <input type="text" class="form-control" v-model="nickNew" id="inputNick" v-bind:placeholder="nick" disabled>
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="imagemPerfil" class="col-sm-2 control-label">Imagem de perfil</label>
+                        <label for="inputPw" class="col-sm-2 control-label">Senha</label>
+                        <div class="col-sm-10">
+                          <input name="cpw" type="password" class="form-control" id="inputPw" v-model="senhaAtual" placeholder="Insira sua senha atual">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="inputExperience" class="col-sm-2 control-label">Nova Senha</label>
+                        <div class="col-sm-10">
+                          <input name="pw" type="password" class="form-control" id="inputPw" v-model="novaSenha1" placeholder="Insira uma nova senha">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="inputSkills" class="col-sm-2 control-label">Repetir Nova Senha</label>
+                        <div class="col-sm-10">
+                          <input name="rpw" type="password" class="form-control" id="inputSkills" v-model="novaSenha2" placeholder="Repita a nova senha">
+                        </div>
+                      </div>
+                    
+                  <div class="form-group">
+                    <label for="imagemPerfil" class="col-sm-2 control-label">Profile Picture</label>
 
                     <div class="col-sm-10">
                       <input type="file" id="file" ref="file" v-on:change="handleFileUpload()" accept="image/*">
@@ -88,7 +96,7 @@
                   </div>
                   <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                      <button type="submit" v-on:click="submitFile()" class="btn btn-primary">Salvar</button>
+                      <button type="submit" v-on:click="submitFile()" class="btn btn-primary">Save</button>
                     </div>
                   </div>
                 </form>
@@ -98,13 +106,13 @@
             <!-- /.tab-content -->
           </div>
             <div class="callout callout-danger uspass-wrong mgtp-5px" name="alert-wrong" id="alert-wrong" role="alert">
-                <p class="color-black">Ooops, algo deu errado no cadastro, tente novamente.</p>
+                <p class="color-black">Oops, something went wrong, try again later.</p>
             </div>
             <div class="callout callout-success alert-logando mgtp-5px" name="alert-success" id="alert-success" role="alert">
-                <p class="color-black">Dados atualizados com sucesso.</p>
+                <p class="color-black">Successfully updated.</p>
             </div>
             <div class="callout callout-warning alert-carregando mgtp-5px" name="alert-carregando" id="alert-carregando" role="alert">
-                <p class="color-black">Carregando, espere um pouco....</p>
+                <p class="color-black">Loading, wait a minute...</p>
             </div>
           <!-- /.nav-tabs-custom -->
         </div>
@@ -132,7 +140,10 @@ export default {
       username: '',
       photo: '',
       nick: '',
-      nome: ''
+      nome: '',
+      senhaAtual: '',
+      novaSenha1: '',
+      novaSenha2: ''
     }
   },
   mounted () {
@@ -185,12 +196,12 @@ export default {
       let vm = this
       console.log('submit')
       this.$http
-        .post('profile', {username: this.idGM, passwordNew: this.passwordNew, name: this.name, nickNew: this.nickNew})
+        .post('profile', {username: this.idGM, senhaAtual: this.senhaAtual, novaSenha1: this.novaSenha1, novaSenha2: this.novaSenha2, name: this.name, nickNew: this.nickNew})
         .then(function (result) {
           console.log(result)
           if (result.data) {
-            console.log(result.data)
             $('#alert-carregando').hide()
+            $('#alert-wrong').hide()
             $('#alert-success').show()
             setTimeout(function () {
               $('#alert-success').hide()

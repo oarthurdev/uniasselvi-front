@@ -57,16 +57,16 @@
         <!-- /.col -->
       </div>
       <div class="callout callout-danger uspass-wrong mgtp-5px" name="alert-wrong" id="alert-wrong" role="alert">
-        <p class="color-black">Usuário ou senha incorretos.</p>
+        <p class="color-black">Incorrect username or password, please try again.</p>
       </div>
       <div class="alert callout-success alert-logando mgtp-5px" name="alert-success" id="alert-success" role="alert">
         <p class="color-black">Dados corretos, você está sendo logado.</p>
       </div>
       <div class="callout callout-warning mgtp-5px" name="alert-carregando" id="alert-carregando" role="alert">
-        <p class="color-black">Carregando, espere um pouco....</p>
+        <p class="color-black">Loading, wait a minute...</p>
       </div>
       <div class="callout callout-danger mgtp-5px" name="alert-desativado" id="alert-desativado" role="alert">
-        <p class="color-black">Conta desativada.</p>
+        <p class="color-black">Account disabled.</p>
       </div>
     </form>
 
@@ -114,7 +114,7 @@ export default {
           localStorage.setItem('permissao', result.data.dados.permissao)
           localStorage.setItem('token', result.data.dados.token)
           localStorage.setItem('nome', result.data.dados.nome)
-          window.location.href = '/home'
+          window.location.href = '/dashboard'
         } else {
           $('#alert-carregando').hide()
           $('#alert-wrong').show()

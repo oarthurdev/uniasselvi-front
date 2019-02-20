@@ -9,11 +9,11 @@
         </button>
         </div>
         <div class="modal-body">
-        Deseja realmente excluir esse usuário?
+            Do you really want to delete the user <b>{{username}}</b> ?
         </div>
         <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
-        <button type="button" class="btn btn-danger" id="confirm" name="confirm">Sim</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+        <button type="button" class="btn btn-danger" id="confirm" name="confirm">Yes</button>
         </div>
         </div>
     </div>
@@ -21,6 +21,9 @@
 </template>
 <script>
 export default {
-  name: 'excluir-gm'
+  name: 'excluir-gm',
+  props: [
+    'username'
+  ]
 }
 </script>

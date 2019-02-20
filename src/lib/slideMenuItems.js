@@ -6,21 +6,21 @@ module.exports = [
   },
   {
     type: 'item',
-    icon: 'fa fa-home',
-    name: 'Home',
+    icon: 'fa fa-dashboard',
+    name: 'Dashboard',
     router: {
-      name: 'Home'
+      name: 'Dashboard'
     }
   },
   {
     type: 'tree',
     icon: 'fa fa-user',
-    name: 'Gerenciar Usuários',
+    name: 'Manage Users',
     items: [
       {
         type: 'item',
         icon: 'fa fa-circle-o',
-        name: 'Procurar Jogador',
+        name: 'Search User',
         router: {
           name: 'ProcurarJogador'
         }
@@ -28,7 +28,7 @@ module.exports = [
       {
         type: 'item',
         icon: 'fa fa-circle-o',
-        name: 'Descobrir ID',
+        name: 'Find ID',
         router: {
           name: 'DescobrirID'
         }
@@ -36,7 +36,7 @@ module.exports = [
       {
         type: 'item',
         icon: 'fa fa-circle-o',
-        name: 'Enviar Itens',
+        name: 'Send Item',
         router: {
           name: 'EnviarItens'
         }
@@ -44,7 +44,7 @@ module.exports = [
       {
         type: 'item',
         icon: 'fa fa-circle-o',
-        name: 'Punir Jogador',
+        name: 'Punish Player',
         router: {
           name: 'PunirJogador'
         }
@@ -52,30 +52,30 @@ module.exports = [
       {
         type: 'item',
         icon: 'fa fa-circle-o',
-        name: 'Jogadores Punidos',
+        name: 'Punished Players',
         router: {
           name: 'JogadoresPunidos'
         }
-      },
-      {
-        type: 'item',
-        icon: 'fa fa-circle-o',
-        name: 'Usuários Online',
-        router: {
-          name: 'UsersOnline'
-        }
       }
+      // {
+      //   type: 'item',
+      //   icon: 'fa fa-circle-o',
+      //   name: 'Usuários Online',
+      //   router: {
+      //     name: 'UsersOnline'
+      //   }
+      // }
     ]
   },
   {
     type: 'tree',
     icon: 'fa fa-user',
-    name: 'Gerenciar GMs',
+    name: 'Manage Staff',
     items: [
       {
         type: 'item',
         icon: 'fa fa-circle-o',
-        name: 'Cadastrar Game Master',
+        name: 'Register Staff Member',
         router: {
           name: 'CadastrarGameMaster'
         }
@@ -83,7 +83,7 @@ module.exports = [
       {
         type: 'item',
         icon: 'fa fa-circle-o',
-        name: 'GMs Cadastrados',
+        name: 'Registered Staff Members',
         router: {
           name: 'GMsCadastrados'
         }
@@ -92,33 +92,48 @@ module.exports = [
   },
   {
     type: 'tree',
-    icon: 'fa fa-circle',
-    name: 'Diversos',
+    icon: 'fa fa-cart-plus',
+    name: 'Shop',
     items: [
       {
         type: 'item',
         icon: 'fa fa-circle-o',
-        name: 'Send message to users',
+        name: 'Send Coins',
         router: {
-          name: 'EnviarMensagem'
+          name: 'SendCoin'
         }
       }
     ]
-  },
-  {
-    type: 'item',
-    icon: 'fa fa-book',
-    name: 'Logs',
-    router: {
-      name: 'Logs'
-    }
-  },
-  {
-    type: 'item',
-    icon: 'fa fa-wrench',
-    name: 'Manutenção',
-    router: {
-      name: 'Maintenance'
-    }
   }
+  // {
+  //   type: 'tree',
+  //   icon: 'fa fa-circle',
+  //   name: 'Diversos',
+  //   items: [
+  //     {
+  //       type: 'item',
+  //       icon: 'fa fa-circle-o',
+  //       name: 'Send message to users',
+  //       router: {
+  //         name: 'EnviarMensagem'
+  //       }
+  //     }
+  //   ]
+  // },
+  // {
+  //   type: 'item',
+  //   icon: 'fa fa-book',
+  //   name: 'Logs',
+  //   router: {
+  //     name: 'Logs'
+  //   }
+  // },
+  // {
+  //   type: 'item',
+  //   icon: 'fa fa-wrench',
+  //   name: 'Manutenção',
+  //   router: {
+  //     name: 'Maintenance'
+  //   }
+  // }
 ]

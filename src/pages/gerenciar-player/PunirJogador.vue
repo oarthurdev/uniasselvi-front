@@ -3,12 +3,12 @@
   <div>
     <section class="content-header">
       <h1>
-        Punir Jogador
-        <small>Informe os dados abaixo</small>
+        Punish Player
+        <small>Enter the data below</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Punir Jogador</li>
+        <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li class="active">Punish Player</li>
       </ol>
     </section>
     <section class="content">
@@ -18,29 +18,25 @@
       <form id="form-banir-jogador" name="form-banir-jogador" v-on:submit="clickBtn">
       <div class="form-group">
         <label for="idPlayer">ID</label>
-        <input type="text" class="form-control" id="idPlayer" v-model="idPlayer" aria-describedby="idPlayerHelp" placeholder="Digite um username para banir" required>
+        <input type="text" class="form-control" id="idPlayer" v-model="idPlayer" aria-describedby="idPlayerHelp" placeholder="Enter a username to ban" required>
       </div>
       <div class="form-group">
-        <label for="motivoBanimento">Motivo da Punição</label>
-        <input type="text" class="form-control" v-model="motivo" id="motivoBanimento" placeholder="Digite um motivo" required>
+        <label for="motivoBanimento">Punishment Reason</label>
+        <input type="text" class="form-control" v-model="motivo" id="motivoBanimento" placeholder="Enter a reason" required>
       </div>
       <div class="form-group">
-        <label for="tipoPunicao">Tipo de punição</label>
+        <label for="tipoPunicao">Type of Punishment</label>
         <select class="form-control" v-model="tipoPunicao" id="tipoPunicao" required>
-          <option value="0">Alerta</option>
-          <option value="1">Banir</option>
-          <option value="2">Desbanir</option>
+          <option value="0">Alert</option>
+          <option value="1">Ban</option>
+          <option value="2">Desban</option>
           </select>
       </div>
       <div class="form-group">
-        <label for="dataBanimento">Data de desban</label>
+        <label for="dataBanimento">Date of Desban</label>
         <input type="date" class="form-control" v-model="dataDesban" id="dataBanimento" required>
       </div>
-      <div class="form-group">
-        <label for="banidoPor">Banido por</label>
-        <input type="text" class="form-control" id="banidoPor" name="banido" v-model="banidoPor" disabled>
-      </div>
-      <button type="submit" class="btn btn-primary">Banir jogador</button>
+      <button type="submit" class="btn btn-primary">Punish player</button>
     </form>
     </div>
     </div>
