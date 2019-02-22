@@ -14,6 +14,8 @@ import ProfileGM from 'components/Profile.vue'
 // import Maintenance from 'components/Maintenance.vue'
 // import EnviarMensagem from 'pages/diversos/EnviarMensagem.vue'
 import Dashboard from 'components/Dashboard.vue'
+import EditLevel from 'components/EditLevel.vue'
+// import RebootServer from 'components/RebootServer.vue'
 import SendCoin from 'components/SendCoin.vue'
 
 Vue.use(Router)
@@ -39,6 +41,11 @@ export default new Router({
       path: '/send-coin',
       name: 'SendCoin',
       component: SendCoin
+    },
+    {
+      path: '/up-character',
+      name: 'EditLevel',
+      component: EditLevel
     },
     {
       path: '/find-id',
@@ -95,6 +102,11 @@ export default new Router({
       name: 'GMsCadastrados',
       component: GMsCadastrados
     },
+    // {
+    //   path: '/reboot-server',
+    //   name: 'RebootServer',
+    //   component: RebootServer
+    // },
     {
       path: '/dashboard',
       name: 'Dashboard',
@@ -106,4 +118,3 @@ export default new Router({
 // function newFunction () {
 //   return 'EnviarMensagem'
 // }
-

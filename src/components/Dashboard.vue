@@ -7,7 +7,7 @@
           icon="ion-person-add"
           v-bind:title="contasRegistradas"
           description="Registered Accounts"
-          moreText="More Information">
+          moreText="More Info">
         </va-small-box>
       </div>
       <div class="col-md-4 col-sm-6 col-xs-12">
@@ -16,7 +16,7 @@
           icon="ion-person-add"
           v-bind:title="gmsRegistrados"
           description="Registered Staff Members"
-          moreText="More Information">
+          moreText="More Info">
         </va-small-box>
       </div>
       <div class="col-md-4 col-sm-6 col-xs-12">
@@ -25,7 +25,7 @@
           icon="ion-person"
           v-bind:title="contasBanidas"
           description="Banned Users"
-          moreText="More Information">
+          moreText="More Info">
         </va-small-box>
       </div>
     </row>

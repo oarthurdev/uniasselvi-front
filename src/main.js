@@ -11,7 +11,7 @@ import EventBus from './lib/eventBus.js'
 import axios from 'axios'
 import httpAdapter from 'axios/lib/adapters/http'
 
-axios.defaults.baseURL = 'https://api-admin.gothicpt.com.br'
+axios.defaults.baseURL = 'http://localhost/painelgm-api-atualizada'
 axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*'
 axios.defaults.headers.common['Content-Type'] = 'application/json'
 axios.defaults.headers.common['Accept'] = 'application/json'

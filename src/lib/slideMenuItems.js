@@ -56,6 +56,14 @@ module.exports = [
         router: {
           name: 'JogadoresPunidos'
         }
+      },
+      {
+        type: 'item',
+        icon: 'fa fa-circle-o',
+        name: 'UP Character',
+        router: {
+          name: 'EditLevel'
+        }
       }
       // {
       //   type: 'item',
@@ -90,6 +98,21 @@ module.exports = [
       }
     ]
   },
+  // {
+  //   type: 'tree',
+  //   icon: 'fa fa-gears',
+  //   name: 'Manage Server',
+  //   items: [
+  //     {
+  //       type: 'item',
+  //       icon: 'fa fa-circle-o',
+  //       name: 'Reboot Server',
+  //       router: {
+  //         name: 'RebootServer'
+  //       }
+  //     }
+  //   ]
+  // },
   {
     type: 'tree',
     icon: 'fa fa-cart-plus',
