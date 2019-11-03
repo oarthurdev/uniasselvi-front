@@ -33,7 +33,7 @@
                 </div> -->
                 <div class="login-box">
   <div class="login-logo">
-    <img src="/static/img/logo.png"></img>
+    <img src="/static/img/logo.png" width="350px" height="200px" style="margin-left: -10px"></img>
   </div>
         <div class="callout callout-danger uspass-wrong mgtp-5px" name="alert-wrong" id="alert-wrong" role="alert">
         <p class="color-black">Incorrect username or password, please try again.</p>

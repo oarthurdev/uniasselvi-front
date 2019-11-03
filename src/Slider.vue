@@ -65,19 +65,9 @@ export default {
     }
   },
   mounted () {
-    let vm = this
+    // let vm = this
     this.token = localStorage.getItem('token')
     this.username = localStorage.getItem('username')
-    this.$http
-        .post('get-photo', {username: this.username})
-        .then(function (result) {
-          if (result.data) {
-            console.log(result.data)
-            vm.photo = result.data.photo
-          } else {
-            console.log('Error')
-          }
-        })
   },
   created () {
 

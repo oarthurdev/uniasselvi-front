@@ -6,7 +6,7 @@
         <!-- mini logo for sidebar mini 50x50 pixels -->
         <span class="logo-mini"><b>G</b>PT</span>
         <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg"><b>Gothic</b>PT</span>
+        <span class="logo-lg"><b>Uniasselvi</b></span>
       </a>
     </router-link>
 
@@ -16,22 +16,20 @@
       <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
         <span class="sr-only">Toggle navigation</span>
       </a>
-      <!-- Navbar Right Menu -->
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img v-bind:src="'http://localhost/painelgm-api-atualizada/Upload/User/ImagemPerfil/'+photo" class="user-image" alt="User Image">
+              <img src="/static/img/perfil.jpg" class="user-image" alt="User Image">
               <span class="hidden-xs">{{ currentUser.name }}</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img v-bind:src="'http://localhost/painelgm-api-atualizada/Upload/User/ImagemPerfil/'+photo" class="img-circle" alt="User Image">
+                <img src="/static/img/perfil.jpg" class="img-circle" alt="User Image">
 
                 <p>
                   {{ currentUser.name }}<br>
-                  <small>{{ currentUser.position }}</small>
                 </p>
               </li>
               <!-- Menu Body -->
@@ -41,9 +39,6 @@
                 <!-- <div class="pull-left">
                   <a href="/profile" class="btn btn-default btn-flat">Profile</a>
                 </div> -->
-                <div class="pull-left">
-                  <router-link to="profile" class="btn btn-default btn-flat">Profile</router-link>
-                </div>
                 <div class="pull-right">
                   <a v-on:click="clickBtn" class="btn btn-default btn-flat">Sign out</a>
                 </div>
@@ -56,7 +51,6 @@
     </nav>
   </header>
 </template>
-
 <script>
 import { mapGetters } from 'vuex'
 
@@ -65,24 +59,12 @@ export default {
   data () {
     return {
       token: '0',
-      username: '',
-      photo: ''
+      username: ''
     }
   },
   mounted () {
-    let vm = this
     this.token = localStorage.getItem('token')
     this.username = localStorage.getItem('username')
-    this.$http
-        .post('get-photo', {username: this.username})
-        .then(function (result) {
-          if (result.data) {
-            console.log(result.data)
-            vm.photo = result.data.photo
-          } else {
-            console.log('Error')
-          }
-        })
   },
   methods: {
     clickBtn (e) {
