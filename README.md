@@ -1,4 +1,4 @@
-# site-oarthurdev
+# uniasselvi-front
 
 ## Project setup
 ```
