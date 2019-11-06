@@ -24,6 +24,22 @@ module.exports = [
         router: {
           name: 'CreateUser'
         }
+      },
+      {
+        type: 'item',
+        icon: 'fa fa-circle-o',
+        name: 'Edit user',
+        router: {
+          name: 'EditUser'
+        }
+      },
+      {
+        type: 'item',
+        icon: 'fa fa-circle-o',
+        name: 'User List',
+        router: {
+          name: 'UserList'
+        }
       }
     ]
   },
@@ -38,6 +54,37 @@ module.exports = [
         name: 'Create products',
         router: {
           name: 'CreateProduct'
+        }
+      },
+      {
+        type: 'item',
+        icon: 'fa fa-circle-o',
+        name: 'Edit products',
+        router: {
+          name: 'EditProduct'
+        }
+      }
+    ]
+  },
+  {
+    type: 'tree',
+    icon: 'fa fa-usd',
+    name: 'Purchase Requests',
+    items: [
+      {
+        type: 'item',
+        icon: 'fa fa-circle-o',
+        name: 'Submit a order',
+        router: {
+          name: 'CreatePurchaseRequest'
+        }
+      },
+      {
+        type: 'item',
+        icon: 'fa fa-circle-o',
+        name: 'Edit order',
+        router: {
+          name: 'EditPurchaseRequest'
         }
       }
     ]

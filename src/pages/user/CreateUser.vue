@@ -72,7 +72,7 @@ export default {
       $('#alert-carregando').show()
       console.log('submit')
       this.$http
-        .post('create-user', { username: this.username, password: this.password, name: this.name, cpf: this.cpf, email: this.email })
+        .post('/user/create', { username: this.username, password: this.password, name: this.name, cpf: this.cpf, email: this.email })
         .then(function (result) {
           if (result.data.jaExiste !== false) {
             $('#alert-existe').show()

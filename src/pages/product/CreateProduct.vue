@@ -58,7 +58,7 @@ export default {
       $('#alert-carregando').show()
       console.log('submit')
       this.$http
-        .post('create-product', { nomeProduto: this.nomeProduto, barCode: this.barCode, unitaryValue: this.unitaryValue })
+        .post('/product/create', { nomeProduto: this.nomeProduto, barCode: this.barCode, unitaryValue: this.unitaryValue })
         .then(function (result) {
           if (result.data) {
             $('#alert-success').show()
@@ -79,7 +79,7 @@ export default {
   }
 }
 </script>
-<style scoped>
+<style>
 .callout{
   display: none;
 }
